@@ -20,7 +20,7 @@ var initializer = require("./config/initializer.js"),
     app = express();
 
 app.set("port", process.env.PORT || 1337);
-app.locals.sitename = "OneToMany";
+app.locals.sitename = "HopAbode";
 app.locals.slogan = "Interactive learning platform for the modern world.";
 app.locals.moment = require("moment");
 app.locals.pluralize = require("pluralize");
