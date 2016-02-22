@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "hopabode", "hopabode\hopabode.njsproj", "{01C3EFC8-52DC-444D-B732-60B56E4CBCEF}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "hopabode", "hopabode.njsproj", "{01C3EFC8-52DC-444D-B732-60B56E4CBCEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
