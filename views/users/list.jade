@@ -1,0 +1,29 @@
+extends ../layouts/anima_layout.jade
+
+block content
+    .row.content
+        h1
+            i.fa.fa-user
+            |People Directory
+
+        ul.letter-list
+            each letter in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+                li
+                    a(href="/users/filter/#{letter}") #{letter}
+
+
+        ul.small-block-grid-1.medium-block-grid-2.large-block-grid-3
+            each user in users
+                li
+                    .people-item
+                        a.left(href="/users/#{user._id}")
+                            img.user-thumbnail(alt="110x110" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABuCAYAAADGWyb7AAAE7ElEQVR4Xu2cV0tkWxCFq81i9sEAYlYE9cGECPrjxYCCGcEERswZM6ZhbdhNj0xrO4WUBeu8zPQ9Xbtqvu+sfXa/3MTFxcW78HJHIEFx7pyFgSnOpzeKc+qN4ijOKwGnc/MdR3FOCTgdm4mjOKcEnI7NxFGcUwJOx2biKM4pAadjM3EU55SA07GZOIpzSsDp2EwcxTkl4HRsJo7inBJwOjYTR3FOCTgdm4mjOKcEnI7NxFGcUwJOx2biKM4pAadjM3EU55SA07GZOIpzSsDp2EwcxTkl4HRsJo7inBJwOjYTR3FOCTgdm4mjOKcEnI7NxFGcUwJOx2biKM4pAadjM3EU55SA07GZOIpzSsDp2L8mcfv7+7K6uipNTU3S3NycxPn+/i5TU1Py+voqQ0NDkp2dHe7t7OzI5uamvL29SV5envT09EhxcfGXGtKth8KHh4fQq7y8PKwXr6WlJTk7OxPUlpaWSm9vb3KOLxv+0BfMxZ2fn8vp6akcHh4GOQ0NDdLW1hYgbW9vC+5fXV1JTk6ODA8Phz/x3+bn5wMSfH55eQl/joyMpAX62Xp3d3dycHAgx8fH8vj4KGVlZTIwMBDWX1tbk729PUkkEpKVlRVmTL3/Q16+XNZc3OzsrFxeXiYHjeJub2/D0x+vVDFIwMnJiVRVVUl3d7eMj4/L09OTdHR0yNbWVpCOdXB/ZmYmfG5paZGVlZV/rof0bmxsJO9FMaibmJgIMjs7O6WkpESmp6fD9/CQIOlWl7k4pAWAFhcXQ7KiOAABsPv7+5AubJExUQsLC2Hrit9N/YwaJAeiCwsL5ebmRoqKisI2m2499Hp+fg7bL1KeKi4+FH19fWELTf1cUVFh5e33/B9iP8qIRPDemZycTIrDdhXhIW3V1dWSWtva2pq8jzXwfUiDxPgeS10vvjNxD1sitsYoDlsoUo9tEg8NHobYu7+/P4i0uswTF//hmYoDaGx/SGdjY6NAFNKK92RM4NHRkSwvL4ela2pqpKurK8n344PwmTgcfMbGxkIaIQpCmbgPj+p3xGHrxAGlvr5e2tvbQyKxpUIi5CElSAsuiMGhJjc399uJwxaeKgonytHR0bC1Dw4OZnSK/alEukzc7u6urK+vBymVlZUhbXE7wzsK93EP2yTSgi0NifnuVonvx4ekoKBA8vPz5fr6WvB3PAyW168R93G7S/eOgxA88XNzc3+dRvHbr66uLiQEWxw+Y2uLPxtwKqytrQ2/1TJ9x8VDCxKMU2t8Z+KggrUtr18j7n8g4GcETqX44R0PH/+zTiY1OMXiQsKRZOvLtThreJb9Kc6SvqI3xSngWZZSnCV9RW+KU8CzLKU4S/qK3hSngGdZSnGW9BW9KU4Bz7KU4izpK3pTnAKeZSnFWdJX9KY4BTzLUoqzpK/oTXEKeJalFGdJX9Gb4hTwLEspzpK+ojfFKeBZllKcJX1Fb4pTwLMspThL+oreFKeAZ1lKcZb0Fb0pTgHPspTiLOkrelOcAp5lKcVZ0lf0pjgFPMtSirOkr+hNcQp4lqUUZ0lf0ZviFPAsSynOkr6iN8Up4FmWUpwlfUVvilPAsyylOEv6it4Up4BnWUpxlvQVvSlOAc+ylOIs6St6U5wCnmUpxVnSV/SmOAU8y1KKs6Sv6E1xCniWpRRnSV/Rm+IU8CxLKc6SvqL3H85qrfpMoeylAAAAAElFTkSuQmCC" data-src="holder.js/110x110" style="width: 110px; height: 110px;")
+
+                        .media-body
+                            h4.person-name
+                                a(href="/users/#{user._id}") #{user.name}
+
+                            ul.inline-list.social-list
+                                li
+                                    a.tooltips(href="" data-toggle="tooltip" data-original-title="Email")
+                                        i.fa.fa-envelope-o

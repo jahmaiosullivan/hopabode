@@ -1,0 +1,46 @@
+{
+  "name": "onetomany",
+  "version": "0.0.0",
+  "authors": [
+    "Jahmai OSullivan <jahmai.osullivan@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "datetimepicker": "~2.4.3",
+    "foundation": "zurb/bower-foundation#~5.5.2",
+    "angular": "1.2.10",
+    "angular-foundation": "~0.6.0",
+    "angular-google-places-autocomplete": "~0.2.6",
+    "ng-ckeditor": "~0.2.1",
+    "ng-flow": "~2",
+    "ng-tags-input": "~2.3.0",
+    "pluralize": "~1.1.2",
+    "jquery-migrate": "~1.2.1",
+    "font-awesome": "~4.4.0",
+    "simple-line-icons": "~2.2.3",
+    "jquery-ui": "~1.11.4",
+    "bootstrap": "~3.3.5",
+    "bootstrap-datepicker": "~1.5.0",
+    "jquery-ui-touch-punch": "*",
+    "bower": "*",
+    "install": "~1.0.4",
+    "jquery-placeholder": "~2.2.0",
+    "jquery-touchswipe": "~1.6.12",
+    "slimScroll": "slimscroll#~1.3.6",
+    "jquery.tagsinput": "~1.3.6",
+    "animate.css": "~3.4.0",
+    "owl.carousel": "~2.0.0-beta.3",
+    "jquery-form": "~3.46.0",
+    "monosocialiconsfont": "*",
+    "icomoon-bower": "icomoon#~0.1.0",
+    "waypoints": "~4.0.0",
+    "jquery-slimscroll": "~1.3.7"
+  },
+  "resolutions": {
+    "jquery-placeholder": "~2.2.0",
+    "jquery": ">= 2.1.0"
+  }
+}

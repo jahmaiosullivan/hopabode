@@ -1,0 +1,35 @@
+﻿div(class="jumbotron")
+  h1 "Sign in"
+  p "We're using passport.js to demonstrate user authentication. Please sign-in with your Local, Twitter, Google, or Facebook account to view your profile."
+  p
+    a(data-toggle="collapse" href="#local" class="btn btn-warning btn-lg" role="button")
+        span(class="glyphicon glyphicon-user") Sign in Locally
+
+    a(href="/auth/twitter" class="btn btn-info btn-lg" role="button")
+        span(class="glyphicon glyphicon-user") Sign in with Twitter
+
+    a(href="/auth/google" class="btn btn-danger btn-lg" role="button")
+        span(class="glyphicon glyphicon-user") Sign in with Google
+    
+    a(href="/auth/facebook" class="btn btn-primary btn-lg" role="button")
+        span(class="glyphicon glyphicon-user") Sign in with Facebook
+  
+
+  div(id="local" class="collapse")
+    a(data-toggle="collapse" href="#local-sign-in" class="btn btn-default btn-md" role="button") I already have an account
+    a(data-toggle="collapse" href="#local-reg" class="btn btn-default btn-md" role="button") I need to make an account
+  
+
+  form#local-sign-in.collapse(action="/login" method="post")
+    div
+        p
+        label Username:
+        input(type="text" name="username")
+    
+    div
+        label Password:
+        input(type="password" name="password")
+    
+    div        
+        input(type="submit" class="btn btn-primary btn-sm" value="Log In")
+    

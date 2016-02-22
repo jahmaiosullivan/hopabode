@@ -1,0 +1,52 @@
+﻿doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        title OneToMany :: Home Page
+
+        link(rel="stylesheet", type='text/css', href="/stylesheets/css/foundation.css")
+        link(rel="stylesheet", type='text/css', href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+        link(href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext',rel='stylesheet',type='text/css')
+    
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js")
+
+        <!--[if lt IE 9]>
+        script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+        script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+        <![endif]-->
+
+        <!-- CSS STYLE-->
+        link(rel="stylesheet", type='text/css', href="/stylesheets/css/main.css")
+
+        block styles
+    body
+        .content
+            block content
+
+        #footer
+        
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js")
+    script(src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+    script(src = '/bower_components/foundation/js/foundation.min.js')
+    script(src = '/bower_components/foundation/js/foundation/foundation.magellan.js')
+    
+    block scripts
+
+    script.
+        $(document).foundation();
+
+        $(document).ready(function() {
+            var footer = $("#footer");
+            var pos = footer.position();
+            var height = $(window).height();
+            height = height - pos.top;
+            height = height - footer.height();
+            if (height > 0) {
+                footer.css({
+                    'margin-top': height + 'px'
+                });
+            }
+        });
+
+    

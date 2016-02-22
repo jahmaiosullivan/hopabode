@@ -1,0 +1,220 @@
+/*
+=============================================== 01. HTML5 ✰ BOILERPLATE RESET FILE ===============================================
+*/
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}audio,canvas,video{display:inline-block}.bypostauthor,.gallery-caption,.sticky{background:0 0}[hidden],audio:not([controls]){display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}button,html,input,select,textarea{font-family:sans-serif;color:#222}body{margin:0;font-size:1em;line-height:1.4}a:focus{outline:dotted thin}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}blockquote{margin:1em 40px}dfn{font-style:italic}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}ins{background:#ff9;color:#000;text-decoration:none}mark{background:#ff0;color:#000;font-style:italic;font-weight:700}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:after,q:before{content:"";content:none}small{font-size:85%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{margin:1em 0;padding:0 0 0 40px}dd{margin:0 0 0 40px}nav ol,nav ul{list-style:none;margin:0;padding:0}img{border:0;-ms-interpolation-mode:bicubic;vertical-align:middle}svg:not(:root){overflow:hidden}figure,form{margin:0}fieldset{border:0;margin:0;padding:0}label{cursor:pointer}legend{border:0;padding:0;white-space:normal}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline}button,input{line-height:normal}button,input[type=button],input[type=reset],input[type=submit]{cursor:pointer;-webkit-appearance:button}button[disabled],input[disabled]{cursor:default}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top;resize:vertical}input:invalid,textarea:invalid{background-color:#f0dddd}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}.chromeframe{margin:.2em 0;background:#ccc;color:#000;padding:.2em 0}.ir{display:block;border:0;text-indent:-999em;overflow:hidden;background-color:transparent;background-repeat:no-repeat;text-align:left;direction:ltr}.ir br{display:none}.hidden{display:none!important;visibility:hidden}.visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.invisible{visibility:hidden}.clearfix:after,.clearfix:before{content:"";display:table}.clearfix:after{clear:both}.lt-ie8 .clearfix{visibility:hidden;width:0;height:0;clear:both}
+
+/* -------------------- B. BACKGROUND COLORS -------------------- */
+.pyre_homepage_schedule-widget-3 {background-color:#061d3d;}
+.pyre_homepage_service-widget-2 {background-color:#3cc0e6;}
+body #taxonomy_navigation_pro a, body #taxonomy_navigation_pro ul { background:#0d2a53; }
+body #taxonomy_navigation_pro .current-cat a, body #taxonomy_navigation_pro a:hover { background:#1fa1c9; }
+body, footer {background:#061d3d;}
+
+/* -------------------- C. FONT COLORS  --------------------*/
+
+a:hover, h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover { color:#26afd1; }
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .gallery-caption, body #main h3.product-title-index-pro a, .summary-text-pro, body .homepage-widget-blog h3.product-title-index-pro a {	color:#061d3d; }
+
+
+/* -------------------- D. FONT FAMILIES -------------------- */
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/*
+=============================================== 03. PRIMARY STYLES ===============================================
+*/
+/* -------------------- A. DEFAULT STYLES -------------------- */
+body {
+  font-size:14px;
+  line-height: 1.7;
+}
+body iframe {border:none; }
+body a img, body a {outline:none !important; text-decoration:none;}
+p {padding-top:0px; margin:0px;}
+p, ul, ol {margin-bottom: 26px;}
+ul, ol {margin-left:8px; padding-left:16px;}
+img {max-width: 100%;height: auto;  width:auto;}
+video, audio {max-width:100%;}
+.alignnone, .alignleft, .alignright, .aligncenter {max-width:100% !important;}
+h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong { font-weight:700; }
+h1, h2, h3, h4, h5, h6 { font-weight:600; margin:0px 0px 20px 0px; padding:0px; line-height:1.4; -ms-word-wrap: break-word; word-wrap: break-word; }
+.homepage-widget-blog h1 { font-size:48px; }
+h1 {font-size:34px; line-height:1.2;  }
+h1.timeline-day-archive { font-size:30px; font-weight:300; }
+h2 {font-size:26px; }
+.schedule-summary-pro, .timeline-left-container, #page-title span, .summary-text-pro { font-size:20px; }
+h1.schedule-day-archive, body #taxonomy_navigation_pro {font-weight:600;  font-size:18px;}
+h4 {font-size:20px; margin-bottom:15px; }
+h5 {font-size:17px;  margin-bottom:15px;  }
+h6 {font-size:14px;  margin-bottom:15px;  }
+dl { margin-bottom: 1.6em; }
+dt { font-weight: bold; }
+dd { margin-bottom: 1.6em; }
+table, th, td { border: 1px solid #eaeaea; border: 1px solid rgba(51, 51, 51, 0.1); }
+th { background:#f7f7f7; }
+table { border-collapse: separate; border-spacing: 0; border-width: 1px 0 0 1px; margin: 0 0 2em; width: 100%; }
+caption, th, td { font-weight: normal; text-align: left; }
+th { border-width: 0 1px 1px 0; font-weight: 700; }
+td { border-width: 0 1px 1px 0; }
+th, td { padding: 1em; }
+figure { margin: 0; }
+del { opacity: 0.8; }
+.alignright {float:right; margin:0 0 10px 20px;}
+.alignleft {float:left; margin:0px 20px 10px 0px;}
+.aligncenter {text-align:center;  margin:0px auto 20px auto; display:block; }
+blockquote { font-size:105%; margin-left:0px; border-left:3px solid #cccccc; padding-left:26px; font-style:italic; line-height:1.5; }
+pre {border:1px solid #eeeeee;  padding:15px; background:#fafafa; overflow:auto; word-wrap: break-word; font-size:90%; line-height:1.2; margin-bottom:25px; }
+code { margin-top:5px; display:block; border:1px solid #eeeeee;  padding:15px; background:#fafafa; overflow:auto; word-wrap: break-word; font-size:90%; line-height:1.2; margin-bottom:25px;}
+
+
+
+
+/* -------------------- B. MAIN CONTAINER STYLES -------------------- */
+.width-container { width:1140px; margin: 0 auto;}
+
+/*
+=============================================== 05. HOMEPAGE STYLES ===============================================
+*/
+.light-fonts-pro.homepage-widget-blog h1, .light-fonts-pro .summary-text-pro  {
+  color:#ffffff;
+}
+
+.homepage-widget-blog {
+  padding:70px 0px 55px 0px;
+
+  h1 {
+    font-weight:300;
+    text-align:center;
+    margin-bottom:30px;
+  }
+}
+
+/*
+=============================================== 12. SHORTCODES ===============================================
+*/
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.clearfix {
+  display: inline-block;
+}
+.clearfix:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+* html .clearfix {
+  height: 1%;
+}
+.clearfix {
+  display: block;
+}
+
+/*
+=============================================== 15. SCHEDULE PAGE STYLES ===============================================
+*/
+.container-schedule {
+  border-top:1px solid rgba(0, 0, 0, 0.06);
+  border-left:1px solid rgba(0, 0, 0, 0.06);
+  -moz-box-shadow:  1px 1px 2px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow:  1px 1px 2px rgba(0, 0, 0, 0.12);
+  box-shadow:  1px 1px 2px rgba(0, 0, 0, 0.12);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  position:relative;
+  min-height:190px;
+}
+
+.schedule-position-pro {
+  position:absolute;
+  bottom:-1px;
+  width:100%;
+
+  background:#000000;
+
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 59%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(59%,rgba(0,0,0,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 59%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 59%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 59%,rgba(0,0,0,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 59%,rgba(0,0,0,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+}
+.schedule-text-pro {
+  padding:20px 25px 20px 25px;
+  color:#999999;
+  font-weight:300;
+}
+
+h2.schedule-title-pro {
+  color:#ffffff;
+  line-height:1.1;
+  margin-bottom:2px;
+
+  a { color:#ffffff; }
+}
+
+#taxonomy_navigation_pro {
+  margin-bottom:30px;
+  margin-left:1.5%;
+  margin-right:1.5%;
+
+  a {
+    color:#ffffff;
+    padding:15px;
+    text-transform:uppercase;
+    display:block;
+    background:#0d2a53;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0px;
+    width: 100%;
+    padding: 0px;
+    display: table;
+    table-layout: fixed;
+
+    li {
+      display: table-cell;
+      width: auto;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    li:last-child {
+      border-right:none;
+    }
+  }
+}
+
+#schedule-container-pro {
+  margin-left:-1.5%;
+  margin-right:5.5%;
+}
+
+
+ul#schedule-content-progression {
+  display:none;
+  list-style:none;
+  padding:0px;
+  margin-left:0.5%;
+  margin-right:0.5%;
+}
+
+

@@ -1,0 +1,59 @@
+extends ../layouts/layout.jade
+
+block content
+    .row.content(data-ng-app="myApp")
+        form#local-reg(name="registrationForm" data-ng-submit="submit('/sign-up', registrationForm.$valid)" method="post" novalidate data-ng-controller="RegisterController")
+            .row
+                .small-12.columns
+                    label Email
+                        span(style="color:red" data-ng-show="registrationForm.email.$invalid && submitted && !registrationForm.email.$focused") *
+                        input.form-control(type="text" name="email" placeholder="Your email address" data-ng-model="user.email" required ng-minlength=4 data-ng-focus)
+                        span(data-ng-show="registrationForm.email.$error.required && submitted && !registrationForm.email.$focused") Email is required.
+                        span(data-ng-show="registrationForm.email.$error.minlength && submitted && !registrationForm.email.$focused") Email must be at least 4 characters.
+            .row
+                .small-12.columns
+                    label Password
+                        span(style="color:red" data-ng-show="registrationForm.password.$invalid && submitted && !registrationForm.password.$focused") *
+                        input#passord.form-control(type="password" placeholder="Password" data-ng-model="user.password" name="password" required)
+                        span(data-ng-show="registrationForm.password.$error.required && submitted && !registrationForm.password.$focused") Password is required.
+                        span(data-ng-show="registrationForm.password.$error.minlength && submitted && !registrationForm.password.$focused") Password must be at least 4 characters.
+            .row
+                .small-12.columns
+                    label.right.inline Name:
+                        span(style="color:red" data-ng-show="registrationForm.name.$invalid && submitted && !registrationForm.name.$focused") *
+                        input#name.form-control(type="text" placeholder="Your name" data-ng-model="user.name" name="name" required)
+                        span(data-ng-show="registrationForm.name.$error.required && submitted && !registrationForm.name.$focused") Your name is required.
+
+            .row
+                .small-12.columns
+                    label Gender:
+                        span(style="color:red" data-ng-show="registrationForm.gender.$invalid && submitted && !registrationForm.gender.$focused") *
+                        select(name="gender" data-ng-model="user.gender" required)
+                            option(value="M") Male
+                            option(value="F") Female
+                        span(data-ng-show="registrationForm.gender.$error.required && submitted && !registrationForm.gender.$focused") Your gender is required.
+
+            .row
+                .small-12.columns
+                    label Age range:
+                        span(style="color:red" data-ng-show="registrationForm.agerange.$invalid && submitted && !registrationForm.agerange.$focused") *
+                        select(name="agerange" data-ng-model="user.agerange" required)
+                            option(value="13") 13 - 20
+                            option(value="21") 21 - 29
+                            option(value="30") 30 - 39
+                            option(value="40") 40 - 49
+                            option(value="50") 50+
+                        span(data-ng-show="registrationForm.agerange.$error.required && submitted && !registrationForm.agerange.$focused") Age range is required.
+            .row
+                .small-12.columns
+                    label Home city:
+                        span(style="color:red" data-ng-show="registrationForm.homecity.$invalid && submitted && !registrationForm.homecity.$focused") *
+                        input(name="homecity" placeholder="Home city" type="text" data-ng-model="user.homecity" required)
+                        span(data-ng-show="registrationForm.homecity.$error.required && submitted && !registrationForm.homecity.$focused") Your home city is required.
+            .row
+                .submit-box.right
+                    button#submit.btn.btn-theme.btn-line.pulse-hover(type="submit") Register
+
+
+block scripts
+    script(src="/javascripts/angular/registercontroller.js")

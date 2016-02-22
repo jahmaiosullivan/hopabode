@@ -1,0 +1,4 @@
+ul.side-nav(role="navigation" title="Link List")
+    each link in links
+        li(role="menuitem")
+            a(href= link.url)= link.name

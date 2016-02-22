@@ -1,0 +1,51 @@
+#page_block_header .border-holder {
+  background-color: #000000;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url('/images/xmobile/top_bg.jpg');
+  border-width: 0;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+  height: 470px;
+}
+
+.page-block .block-inner {
+  background-color: transparent;
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+  padding-top: 5%;
+}
+
+
+.owl-item {
+  width: 233.833px;
+  margin-right: 100px;
+  position: relative;
+  min-height: 1px;
+  float: left;
+  -webkit-backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.owl-item img {
+  display: block;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+}
+
+img.chart {
+  height: 150px;
+  width: 150px;
+}
+
+
+
+span.main_logo {
+  display: inline-block;
+  background-image: url('/images/xmobile/logo-color.png');
+  height: 56px;
+  width: 350px;
+}
+

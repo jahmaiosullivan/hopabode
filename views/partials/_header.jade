@@ -1,0 +1,33 @@
+header#home
+    .header-phones-version.image-overlay
+        .container.col-xs-12.intro
+           .welcome-message
+               img.logo(src='/images/xmobile/logo-light.png', alt='')
+           #subtextpanel
+               h1#slogan #{ slogan }
+               article#stayintouch
+                   h4 Keep up with us
+                   .messages
+                     p.subscription-success
+                     p.subscription-failed
+                 
+                   form#subscription(target='_blank', role='form')
+                       input#mc-email(type='email', placeholder='Enter your email address')
+                       button(type='submit')
+                         span.icon.icon-compass
+
+                   ul.social
+                     li
+                        span Connect with us: 
+                     li
+                       a(href='https://twitter.com/#{ sitename }', target='_blank')
+                         i.icon-twitter
+                     li
+                       a(href='https://www.facebook.com/#{ sitename }', target='_blank')
+                         i.icon-facebook
+        ul.responsive-button(style="display: none;")
+            li
+                a(href="/login") Login
+            li
+                a(href="/register") Register
+         // HEADER END

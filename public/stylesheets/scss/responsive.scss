@@ -1,0 +1,293 @@
+/* Table of Contents
+==================================================
+01. RETINA STYLES
+02. BASE STYLES (1140px)
+03. #DESKTOP (960px)
+04. #Tablet (Portrait)
+05. #Mobile (Portrait)
+*/
+
+
+/*
+=============================================== 01. RETINA STYLES ===============================================
+*/
+@media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  body nav select {background:#FAFAFA url(../images/select-arrow@2x.png) center right no-repeat; background-size:contain;}
+}
+/* IE7-IE8 Fixes*/
+.lt-ie9	body nav select {background: url(../images/select-arrow.png) center right no-repeat;}
+
+
+/*
+=============================================== 02. BASE STYLES (1140px) ===============================================
+*/
+/* Note: Design for a width of 1040px */
+html {-webkit-text-size-adjust: none;}	/* Removes webkit font resizing */
+body {max-width:100%; width:100%;}
+img {max-width:100%; height: auto; }
+
+
+/*
+=============================================== 03. #DESKTOP (960px) ===============================================
+*/
+/* Note: Design for a width of 960px */
+@media only screen and (min-width: 959px) and (max-width: 1190px) {
+
+  .width-container { width:94%; }
+  body .flickr-widget ul li img {  width:55px; height:55px;  }
+
+  .sf-menu a { padding-right:16px; 	padding-left:16px; }
+
+
+  #page-title h1 { font-size:46px;  }
+  .homepage-widget-blog h1 { font-size:44px; }
+  .footer-map-home h1 { font-size:38px;}
+  body #main ul li.product .amount ,body .main-text-widgetpro ul li.product .amount { font-size:33px; }
+  h1 {font-size:32px;  }
+  h1.timeline-day-archive { font-size:28px;  }
+  h2 {font-size:25px; }
+  h3, body #main h3.product-title-index-pro, body .homepage-widget-blog .width-container .main-text-widgetpro h3.product-title-index-pro {font-size:21px; }
+  .schedule-summary-pro, .timeline-left-container, #page-title span, .summary-text-pro { font-size:19px; }
+  h1.schedule-day-archive, body #taxonomy_navigation_pro {font-size:17px;}
+  h4 {font-size:19px; }
+  h5, body #main .gallery-caption, body .homepage-widget-blog .gallery-caption {font-size:16px;   }
+  #sidebar h5 { font-size:14px; }
+  h6 { font-size:13px;   }
+  ul#bread-crumb { font-size:11px; }
+
+}
+
+
+/*
+=============================================== 04. #Tablet (Portrait) ===============================================
+*/
+/* Note: Design for a width of 768px */
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .width-container { width:95%; }
+
+
+  .sf-menu a { padding-right:8px; padding-left:8px; font-size: 12px;}
+  .sf-menu .sf-sub-indicator {font-size: 10px;}
+
+  body.home h1#logo, header #logo  { margin-top:10px; margin-bottom:10px;  }
+
+  /* Font Sizes */
+  #page-title h1 { font-size:40px;  }
+  .homepage-widget-blog h1 { font-size:38px; }
+  .footer-map-home h1 { font-size:32px;}
+  body #main ul li.product .amount ,body .main-text-widgetpro ul li.product .amount { font-size:30px; }
+  h1 {font-size:29px;  }
+  h1.timeline-day-archive { font-size:26px;  }
+  h2 {font-size:22px; }
+  h3, body #main h3.product-title-index-pro, body .homepage-widget-blog .width-container .main-text-widgetpro h3.product-title-index-pro {font-size:19px; }
+  .schedule-summary-pro, .timeline-left-container, #page-title span, .summary-text-pro { font-size:17px; }
+  h1.schedule-day-archive, body #taxonomy_navigation_pro {font-size:16px;}
+  h4 {font-size:17px; }
+  h5 , body #main .gallery-caption, body .homepage-widget-blog .gallery-caption{font-size:15px;   }
+  #sidebar h5 { font-size:13px; }
+  h6 { font-size:12px;   }
+  ul#bread-crumb { font-size:10px; }
+
+  /* Button Resize */
+  body .homepage-widget-blog button.single_add_to_cart_button, body .homepage-widget-blog input.button, body.ecommerce-cart .homepage-widget-blog td.actions  input.button.checkout-button,
+  body .homepage-widget-blog button.button, body .homepage-widget-blog a.button, body #single-product-pro button.single_add_to_cart_button,
+  input#submit-pro, body #main button.single_add_to_cart_button, body #main input.button, body.ecommerce-cart #main td.actions  input.button.checkout-button,
+  body #main button.button, body #main a.button, body #single-product-pro button.single_add_to_cart_button,
+  body #main input.wpcf7-submit, body a.ls-sc-button.default,
+  a.progression-button, a.more-link, body input#submit {
+    padding:12px 15px;
+    font-size:80%;
+  }
+
+
+
+  /* ecommerce Columns Fix */
+  .ecommerce .products ul, .ecommerce ul.products {margin: 0px 0px 1em; padding: 0px; clear: both; list-style: outside none none;}
+  body #main li.product.column-4 {margin-right:2%; width: 23.5%; clear:none;}
+  body #main li.product.column-3 {margin-right:2%; width: 32%; clear:none;}
+  body #main li.product.column-2 {margin-right:2%; width: 49%; clear:none; }
+  body #main li.product.column-2.last, body #main li.product.column-3.last, body #main li.product.column-4.last, .lt-ie8 body #main li.product.column-2.last, .lt-ie8 body #main li.product.column-3.last, .lt-ie8 body #main li.product.column-4.last {margin-right:0%;}
+  body #main li.product { float:left;}
+  body #main li.product.first { clear: both;}
+  body #main .columns-2 li.product {margin-left:1%;margin-right:1%; width: 48%; }
+  body #main .columns-3 li.product {margin-left:1%;margin-right:1%; width: 31.3%; }
+  body #main .columns-4 li.product {margin-left:1%;margin-right:1%; width: 23%; }
+
+  body .homepage-widget-blog li.product.column-4 {margin-right:2%; width: 23.5%; clear:none;}
+  body .homepage-widget-blog li.product.column-3 {margin-right:2%; width: 32%; clear:none;}
+  body .homepage-widget-blog li.product.column-2 {margin-right:2%; width: 49%; clear:none; }
+  body .homepage-widget-blog li.product.column-2.last, body .homepage-widget-blog li.product.column-3.last, body .homepage-widget-blog li.product.column-4.last, .lt-ie8 body .homepage-widget-blog li.product.column-2.last, .lt-ie8 body .homepage-widget-blog li.product.column-3.last, .lt-ie8 body .homepage-widget-blog li.product.column-4.last {margin-right:0%;}
+  body .homepage-widget-blog li.product { float:left;}
+  body .homepage-widget-blog li.product.first { clear: both;}
+  body .homepage-widget-blog .columns-2 li.product {margin-left:1%;margin-right:1%; width: 48%; }
+  body .homepage-widget-blog .columns-3 li.product {margin-left:1%;margin-right:1%; width: 31.3%; }
+  body .homepage-widget-blog .columns-4 li.product {margin-left:1%;margin-right:1%; width: 23%; }
+
+}
+
+
+/*
+=============================================== 05. #Mobile (Portrait) ===============================================
+*/
+/* Note: Design for a width of 320px */
+
+@media only screen and (max-width: 767px) {
+  .width-container { width:94%; }
+
+  body {font-size:12px;}
+
+  body .gallery-item { width:100% !important; }
+  #content-left-container, #sidebar, #content-container-pro,
+  .home1column-progression, .home2column-progression, .home3column-progression, .home4column-progression,
+  .footer-2-column .widget, .footer-3-column .widget, .footer-4-column .widget,
+  footer .footer-2-column .widget, footer .footer-3-column .widget, footer .footer-4-column .widget,
+  .grid2column-progression, .grid3column-progression, .grid3columnbig-progression, .grid4column-progression, .grid4columnbig-progression  {
+    width:100%; margin-bottom:10px; margin-left:0px; margin-right:0px;
+  }
+
+
+  body td.product-remove, body th.product-remove {display:none;}
+  body.ecommerce-cart #main #content-container-pro, body.ecommerce-checkout #main #content-container-pro  {
+    padding:0px;
+    border:none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:  none;
+    box-shadow: none;
+    background:None;
+  }
+  body.ecommerce-cart input.button {padding:8px 11px !important; font-size:70%; }
+  body.ecommerce-cart table.cart {
+    font-size:9px;
+  }
+
+  ul#schedule-content-progression  li.schedule1column-pro, ul#schedule-content-progression  li.schedule2column-pro, ul#schedule-content-progression  li.schedule3column-pro, ul#schedule-content-progression  li.schedule4column-pro {
+    width:100%;
+    float:none;
+    margin-left:0px;
+    margin-right:0px;
+  }
+  body.single-product .summary, body.single-product .images, body ul.products li.product {width:100% !important; float:none; margin-left:0px !important; margin-right:0px !important; }
+
+  pre, code {font-size:12px;}
+
+  #map-embed-pro {
+    float:none;
+    width:100%;
+  }
+  #map-text-pro  {
+    float:none;
+    width:89%;
+  }
+
+
+  /* Font Sizes */
+  #page-title h1 { font-size:24px;  padding-bottom:8px; }
+  .homepage-widget-blog h1 { font-size:22px; }
+  .footer-map-home h1 { font-size:20px;}
+  body #main ul li.product .amount ,body .main-text-widgetpro ul li.product .amount { font-size:18px; }
+  h1 {font-size:20px;  }
+  h1.timeline-day-archive { font-size:19px;  }
+  h2 {font-size:18px; }
+  h3, body #main h3.product-title-index-pro, body .homepage-widget-blog .width-container .main-text-widgetpro h3.product-title-index-pro {font-size:17px; }
+  .schedule-summary-pro, .timeline-left-container, #page-title span, .summary-text-pro { font-size:15px; }
+  h1.schedule-day-archive, body #taxonomy_navigation_pro {font-size:14px;}
+  h4 {font-size:14px; }
+  h5, body #main .gallery-caption, body .homepage-widget-blog .gallery-caption {font-size:13px;   }
+  #sidebar h5 { font-size:12px; }
+  h6 { font-size:11px;   }
+  ul#bread-crumb { font-size:9px; }
+
+  .wpcf7 input, #respond input {width:70%; }
+  .wpcf7 textarea, #respond textarea {width:85%; }
+
+
+  #map-left-location {
+    width:100%;
+    position:static;
+    margin-bottom:15px;
+  }
+
+  #map-left-location #map-progression { position:static; overflow:auto;}
+  #map-right-location {
+    position:static;
+    width:90%;
+  }
+
+  #map-right-location #content-container-pro {
+    padding-left:5%; padding-right:5%;
+  }
+
+  .google-maps-expand .googlemap {max-height:250px !important;}
+
+
+  /* Select Menu */
+  body.home h1#logo, header #logo  { margin-top:10px; margin-bottom:10px;  }
+  body.home #gradient-mobile-pro { display:block;}
+  body.home h1#logo { position:relative; }
+
+  #fixed-nav-pro { height:47px !important;}
+  #left-logo-pro .menu-main-navigation-container {float:none;}
+  body.home #left-logo-pro h1#logo, header #left-logo-pro #logo { float:none; }
+
+  header nav { padding:10px 0px;}
+  header nav h1 {float:none; margin-bottom:25px; }
+  header nav:before {display:none;}
+  #right-navigation-pro { float:none;}
+  .scroll-to-fixed-fixed { position:relative !important; top:0px; }
+  nav ul { display: none;  }
+  nav select option { background:#fff; color:#888;}
+  nav select { text-transform:none; display:block;  margin-left:auto; margin-right:auto; width:280px; min-width: 150px; max-width: 100%; -webkit-appearance: none; -moz-appearance: normal; appearance: normal;
+    -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px; -webkit-padding-start: 2px; -webkit-user-select: none;-moz-user-select: none;
+    background-color:#FAFAFA;
+    background:#FAFAFA url(../images/select-arrow.png) center right no-repeat;
+    font-size:12px;
+    border: 1px solid #aaaaaa;
+    color: #555555;
+    padding:6px 5px 6px 10px;
+  }
+
+
+  body.home #schedule-container-pro, body.schedule #schedule-container-pro {
+    margin-left:0%;
+    margin-right:0%;
+  }
+
+  .share-progression, body.home .share-progression {
+    top:135px;
+  }
+
+  .share-progression .social-ico a i {
+    padding:12px;
+    font-size:12px;
+    min-width:12px;
+  }
+
+  .ecommerce ul.products li.product, .ecommerce-page ul.products li.product {
+    width: 48%;
+    float: left;
+    clear: both;
+    margin: 0px 0px 2.992em;
+  }
+
+  body ul.products li.product {
+    width: 100% !important;
+    float: none;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+
+  .ecommerce .products ul, .ecommerce ul.products {
+    margin: 0px 0px 1em;
+    padding: 0px;
+    clear: both;
+    list-style: outside none none;
+  }
+
+
+  #map-embed-pro iframe, #map-progression iframe  {max-height: 350px;}
+
+
+}

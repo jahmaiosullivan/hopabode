@@ -1,0 +1,16 @@
+﻿mixin feature(icon, title, msg)
+    .col-md-3
+        span(class="icon icon-#{ icon }")
+        h3 #{ title }
+        p #{ msg }
+
+.container
+   h3.subtitle How it works?
+   .row#messaging
+        +feature('target',"Active learning", "Learn at your own pace in an active learning environment. No more training videos that put you to sleep.")
+        .col-md-1
+            i.icon-arrow-right.nextarrow
+        +feature('users','Collaborate', "Learn along with others who will help you along the way.")
+        .col-md-1
+            i.icon-arrow-right.nextarrow
+        +feature('accessibility','Fun and engaging', "We believe learning should be fun! Our unique approach keeps you engaged while you learn.")

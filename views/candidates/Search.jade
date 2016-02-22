@@ -1,0 +1,167 @@
+﻿extends ../layouts/layout.jade
+
+block styles
+    style.
+        body {
+            font-family: Lato;
+        }
+        ul.resumes {
+            list-style: none;
+            background: #fff;
+            border: 1px solid #ebebeb;
+            margin-bottom: 1em;
+        }
+
+        ul.resumes li {
+            list-style: none outside;
+            padding: 0;
+            margin: 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        ul.resumes li a .candidate-column {
+            float: left;
+            width: 50%;
+            padding-left: 80px;
+            padding-top: 10px;
+        }
+
+        ul.resumes li a img.candidate_photo {
+            width: 64px;
+            height: auto;
+            padding: 2px;
+            border: 1px solid #ececec;
+            border-radius: 50%;
+            left: 20px;
+            position: absolute;
+            left: 1em;
+            float: left;
+            margin-right: 1em;
+            vertical-align: middle;
+            box-shadow: none;
+        }
+
+        ul.resumes li a h3.name {
+            font-size: 1em;
+            line-height: 1.5em;
+            font-weight: 300;
+            font-style: normal;
+            color: #454546;
+            margin: 0;
+        }
+
+
+        ul.resumes li a .candidate-column .candidate-title {
+            font-weight: 300;
+            color: #8c8c8c;
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        ul.resumes li a .candidate-location-column {
+            float: left;
+            width: 20%;
+            padding-left: 0;
+            text-align: left;
+            color: #999;
+            line-height: 1.5em;
+            position: relative;
+        }
+        
+        ul.resumes li a div.candidate-location-column .candidate-location {
+            padding-left: 18px;
+        }
+
+        ul.resumes li a div.candidate-location-column .candidate-location:before {
+            color: #a6ce39;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            -webkit-font-smoothing: antialiased;
+            font-family: job-manager !important;
+            text-decoration: none;
+            font-weight: 400;
+            font-style: normal;
+            vertical-align: top;
+            font-size: 16px;
+            margin: 0 3px 0 0;
+            content: '\e80d';
+            position: absolute;
+            left: 0;
+        }
+
+        ul.resumes li a .resume-posted-column {
+            margin: 0;
+            color: #999;
+            line-height: 1.5em;
+            position: relative;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            float: right;
+            text-align: left;
+            width: 20%;
+            padding: 1px 0 0 0;
+            font-size: 13px;
+        }
+
+        ul.resumes li a {
+            position: relative;
+            display: block;
+            padding: 20px;
+            min-height: 104px;
+            -webkit-transition: 0.2s;
+            transition: 0.2s;
+        }
+
+block content
+    mixin searchbar()
+        form.resume_filters
+           .search_resumes.search_resumes-with-categories
+             .search_keywords.resume-filter
+               label(for='search_keywords') Keywords
+               input#search_keywords.form-control(type='text', name='search_keywords', placeholder='All Pet Sitters', value='')
+             .search_location.resume-filter
+               label(for='search_location') Location
+               input#search_location.form-control(type='text', name='search_location', placeholder='Any Location', value='')
+             .search_categories.resume-filter
+               label(for='search_categories') Category
+               select#search_categories.postform.form-control(name='search_categories')
+                 option(value='0') Any category
+                 option.level-0(value='39') Cat Sitter
+                 option.level-0(value='38') Dog Sitter
+                 option.level-0(value='183') Pet Sitter
+             .search_submit.resume-filter
+               label(for='search_submit') Submit
+               button.btn.btn-block.btn-secondary.btn-single-icon(type='submit')
+                 i.fa.fa-lg.fa-search
+           
+    mixin candidateblade(profileurl, photourl, name, title, location, date, category)
+       li
+         a(href='#{ profileurl }')
+             img.candidate_photo(src='http://petsitterwp.dan-fisher.com/wp-content/uploads/2014/10/#{ photourl }', alt='Photo')
+             .candidate-column
+               h3.name #{ name}
+               .candidate-title
+                  | #{ title }
+             .candidate-location-column
+               span.candidate-location #{ location }
+             .resume-posted-column.resume-meta
+               date #{ date }
+               .resume-category
+                 | #{ category }
+
+    .container
+       .resumes
+         +searchbar
+         ul.resumes
+           each i in [1, 2, 3, 4, 5]
+               +candidateblade('will-collins', 'team-thumb2-xsmall.jpg', 'Will Collins', 'Walk, play and overnight care', 'Houston, TX', '1 year ago', 'Pet Sitter')
+               +candidateblade('matthew-harmon', 'team-thumb1-xsmall.jpg', 'Matthew Harmon', 'Enthusiastic Pet Care Available Today! :)', 'London, UK', '1 year ago', 'Pet Sitter')
+               +candidateblade('jessica-james', 'team-thumb4-xsmall.jpg', 'Jessica James', 'Excellent Dog Walker And Sitter', 'New York', '1 year ago', 'Pet Sitter')
+               +candidateblade('jessica-james', 'team-thumb3-xsmall.jpg', 'Anne Walker', 'Horse, dog, house and pet sitter.', 'London, UK', '1 year ago', 'Pet Sitter')
+
+         .row
+           .col-md-4.col-md-offset-4
+             a.load_more_resumes.btn.btn-default(href='#', style='')
+               strong Load more resumes

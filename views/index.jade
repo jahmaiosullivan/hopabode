@@ -1,0 +1,48 @@
+﻿extends layouts/anima_layout
+
+block content
+   header.main-header
+      .main-header-bars
+
+   .content(data-ng-controller="HomeController")
+      .row.collapse(style="background-color: #fff; padding: 10px 0;")
+          .small-2.columns.small-centered
+              input.form-control.search(type="text" placeholder="Search")
+      .row
+          .medium-11.medium-centered.columns
+              div
+                  ul.small-block-grid-1.medium-block-grid-3
+                    li(data-ng-repeat="group in groups")
+                        +groupbox("{{ group.name }}", "{{ group.name }}","{{ group.bannerurl}}","{{ group.description}}",  "{{ group.tags[0] }}", "{{ group.members.length}}")
+
+
+mixin groupbox(groupname, pageurl, imageurl, description, tag, memberCount)
+    article.groupbox
+        .imagedisplay
+            .overlayer
+                .overlayer-wrapper
+                    .tiles
+                        .right
+                            a.hashtags.transparent(href="#") #{ tag }
+
+            a.hover-effect(href="/group/#{groupname}")
+                img(src="#{imageurl}" alt="")
+
+        .details
+            .tiles-body
+                .row
+                    .row
+                        .small-12.columns
+                            h2.groupname
+                                a(href="/group/#{groupname}") #{groupname}
+
+                    .row
+                        .small-12.columns
+                            p.description #{description}
+                            .bold.members(ng-bind="memberString(#{memberCount})")
+
+
+
+
+block scripts
+    script(src="/javascripts/angular/homecontroller.js")
