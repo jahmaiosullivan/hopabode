@@ -8,8 +8,7 @@
     "email": "jahmai.osullivan@workqueue.co"
   },
   "dependencies": {
-    
-    
+    "dotenv": "^2.0.0"
   },
   "devDependencies": {
     "grunt-nodemon": "^0.4.0",
