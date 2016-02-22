@@ -1,0 +1,1 @@
+﻿robocopy "." NULL /L /S /NJH /BYTES /FP /NC /NDL /XJ /TS /R:0 /W:0 | where {$_.Length -gt 260 } > "filelist.txt"

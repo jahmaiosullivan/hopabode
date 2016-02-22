@@ -36,8 +36,6 @@
     <Compile Include="config\mongodbconfig.js" />
     <Compile Include="config\passportconfig.js" />
     <Compile Include="config\pgdbconfig.js" />
-    <Compile Include="datalayer\docdb.js" />
-    <Compile Include="datalayer\docdbUtils.js" />
     <Compile Include="datalayer\mongodb_repository.js" />
     <Compile Include="datalayer\pgdb.js" />
     <Compile Include="Gruntfile.js" />
@@ -94,6 +92,7 @@
     <Content Include="tests\config\build\config.gypi" />
     <Content Include="tests\config\morganLog.log" />
     <Content Include="tests\config\passportconfig.js.map" />
+    <Content Include="tools\fullfilepaths.ps1" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
     <Content Include="views\error.jade" />
@@ -121,6 +120,7 @@
     <Folder Include="tests\models\" />
     <Folder Include="tests\services\" />
     <Folder Include="tmp\" />
+    <Folder Include="tools\" />
     <Folder Include="typings\" />
     <Folder Include="typings\express\" />
     <Folder Include="typings\node\" />
