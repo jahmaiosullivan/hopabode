@@ -39,7 +39,6 @@
     <Compile Include="datalayer\mongodb_repository.js" />
     <Compile Include="datalayer\pgdb.js" />
     <Compile Include="Gruntfile.js" />
-    <Compile Include="gulpfile.js" />
     <Compile Include="models\event.js" />
     <Compile Include="models\invitee.js" />
     <Compile Include="models\user.js" />
