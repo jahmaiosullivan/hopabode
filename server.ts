@@ -2,24 +2,27 @@
 
 require('dotenv').load();
 
+/**
+ * Globals
+ */
+global.Sequelize = require('sequelize');
+global.Q = require('q');
+/**
+ * Module dependencies.
+ */
+
+
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
-
-/**
- * Globals
- */
-global.pgdb = require('./datalayer/pgdb');
-global.Sequelize = require('sequelize');
-global.Q = require('q');
-
-/**
- * Module dependencies.
- */
 var initializer = require("./config/initializer.js"),
     app = express();
+var apiroutes = require("./routes/api/v1/apiroutes")(app, express.Router())
+var webroute = require("./routes/webroutes")(express.Router());
+var authroutes = require("./routes/webroutes_auth")(app, express.Router());
+
 
 app.locals.sitename = "Profilable";
 app.locals.slogan = "Where your professional life thrives!";
@@ -37,11 +40,14 @@ app.use(methodOverride("_method"));
 app.use(methodOverride("X-HTTP-Method-Override"));
 app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
+app.use('/api/v1', apiroutes);
+app.use("/", authroutes);
+app.use("/", webroute);
+
 
 initializer.FilePaths(app, path, express, __dirname);
 initializer.Auth(app);
 initializer.Logs(app);
-initializer.Routes(app, express);
 //initializer.Jobs(app);
 
 var server = app.listen(process.env.PORT || 1337, function () {

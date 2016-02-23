@@ -5,28 +5,6 @@
     
 
 module.exports = {
-    Routes: function (app, express) {
-        // ROUTES FOR OUR WEB APP  
-        // =============================================================================
-        var webroute = require(__dirname + "/../routes/webroutes")(express.Router());
-        app.use("/", webroute);
-        
-        var authroutes = require(__dirname + "/../routes/webroutes_auth")(app, express.Router());
-        app.use("/", authroutes);
-
-        // ROUTES FOR OUR API
-        // =============================================================================
-        var apiRoutePath = __dirname + "/../routes/api/v1/";
-        fs.readdirSync(apiRoutePath).forEach(function (file) {
-            var apiroute = require(apiRoutePath + file)(app, express.Router());
-            app.use('/api/v1', apiroute);
-        });
-
-        // ROUTES FOR Jobs
-        // =============================================================================
-        //var taskroutes = require('../routes/jobs')(express.Router());
-        //app.use('/jobs', taskroutes);
-    },
     Logs: function (app){
         // create a write stream (in append mode)
         var logStream = fs.createWriteStream(__dirname + '/morganLog.log', { flags: 'a' })
