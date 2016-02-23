@@ -1,7 +1,7 @@
 ﻿var groupservice =  new (require('../../../services/groupservice'))();
 var userservice =  new (require('../../../services/userservice'))();
 
-module.exports = function (router) {
+module.exports = function (app, router) {
     var api = router.route('/group');
 
     api.all(function (req, res, next) {

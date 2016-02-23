@@ -11,14 +11,14 @@ module.exports = {
         var webroute = require(__dirname + "/../routes/webroutes")(express.Router());
         app.use("/", webroute);
         
-        var authroutes = require(__dirname + "/../routes/webroutes_auth")(express.Router());
+        var authroutes = require(__dirname + "/../routes/webroutes_auth")(app, express.Router());
         app.use("/", authroutes);
 
         // ROUTES FOR OUR API
         // =============================================================================
         var apiRoutePath = __dirname + "/../routes/api/v1/";
         fs.readdirSync(apiRoutePath).forEach(function (file) {
-            var apiroute = require(apiRoutePath + file)(express.Router());
+            var apiroute = require(apiRoutePath + file)(app, express.Router());
             app.use('/api/v1', apiroute);
         });
 

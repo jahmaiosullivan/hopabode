@@ -1,4 +1,4 @@
-﻿module.exports = function (router) {
+﻿module.exports = function (app, router) {
     /*RESTful API Router*/
     var api = router.route('/invitee');
     var inviteedb = require('../../../services/inviteeservice');

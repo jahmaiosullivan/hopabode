@@ -1,10 +1,10 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
     // 1. All configuration goes here
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         concurrent: {
             dev: {
-                tasks: ['nodemon', 'watch'],
+                tasks: ['nodemon','watch'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -46,11 +46,11 @@ module.exports = function (grunt) {
         imagemin: {
             dynamic: {
                 files: [{
-                        expand: true,
-                        cwd: 'public/images/charts',
-                        src: ['**/*.{png,jpg,gif}'],
-                        dest: 'public/images/build/'
-                    }]
+                    expand: true,
+                    cwd: 'public/images/charts',
+                    src: ['**/*.{png,jpg,gif}'],
+                    dest: 'public/images/build/'
+                }]
             }
         },
         nodemon: {
@@ -82,9 +82,9 @@ module.exports = function (grunt) {
                 }
             }
         },
-        sass: {
-            dist: {
-                options: {
+        sass: {                              // Task
+            dist: {                            // Target
+                options: {                       // Target options
                     style: 'expanded',
                     sourcemap: 'none'
                 },
@@ -96,11 +96,11 @@ module.exports = function (grunt) {
                 })
             },
             bower: {
-                options: {
+                options: {                       // Target options
                     style: 'expanded',
                     sourcemap: 'none'
                 },
-                files: {
+                files: {                         // Dictionary of files
                     'public/stylesheets/css/foundation.css': 'bower_components/foundation/scss/foundation.scss',
                     'public/stylesheets/css/normalize.css': 'bower_components/foundation/scss/normalize.scss'
                 }
@@ -123,15 +123,17 @@ module.exports = function (grunt) {
         cssmin: {
             target: {
                 files: [{
-                        expand: true,
-                        cwd: 'public/stylesheets/css',
-                        src: ['*.css', '!*.min.css'],
-                        dest: 'public/stylesheets/css',
-                        ext: '.min.css'
-                    }]
+                    expand: true,
+                    cwd: 'public/stylesheets/css',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'public/stylesheets/css',
+                    ext: '.min.css'
+                }]
             }
         }
+
     });
+
     // 3. Where we tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -143,8 +145,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-newer');
+
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-    grunt.registerTask('default', ['newer:concat', 'cssmin', 'newer:uglify', 'concurrent']);
+    grunt.registerTask('default', [  'newer:concat', 'cssmin', 'newer:uglify',  'concurrent']);
     grunt.registerTask('run', ['newer:concat', 'cssmin', 'newer:uglify']);
+
 };
-//# sourceMappingURL=gruntfile.js.map

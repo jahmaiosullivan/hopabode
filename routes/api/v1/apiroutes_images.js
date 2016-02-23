@@ -13,7 +13,7 @@ try {
 // Configure access control allow origin header stuff
 var ACCESS_CONTROLL_ALLOW_ORIGIN = false;
 
-module.exports = function (router) {
+module.exports = function (app, router) {
 // Handle uploads through Flow.js
     router.post('/upload', multipartMiddleware, function(req, res) {
         console.log('Uploading image');

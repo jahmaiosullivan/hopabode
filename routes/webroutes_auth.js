@@ -1,7 +1,7 @@
 var passport = require('passport');
 var viewsFolder = 'auth';
 var authHelper = require('./authHelper');
-module.exports = function (router) {
+module.exports = function (app, router) {
     router.get('/login', authHelper.isAnonymous, function (req, res) {
         res.render(viewsFolder + '/login', {});
     });

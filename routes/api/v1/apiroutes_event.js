@@ -1,8 +1,7 @@
 ﻿var moment = require('moment');
-var vars = require('../../../vars');
 var eventservice =  new (require('../../../services/eventservice'))();
 
-module.exports = function (router) {
+module.exports = function (app, router) {
     var api = router.route('/event');
 
     api.all(function (req, res, next) {
@@ -20,8 +19,8 @@ module.exports = function (router) {
         eventservice.Create(parseInt(req.body.groupid),
                             req.body.title,
                             req.body.description,
-                            moment(req.body.start, vars.defaultDateFormat).utc().toDate(),
-                            moment(req.body.enddate, vars.defaultDateFormat).utc().toDate(),
+                            moment(req.body.start, app.locals.defaultDateFormat).utc().toDate(),
+                            moment(req.body.enddate, app.locals.defaultDateFormat).utc().toDate(),
                             req.body.location)
         .then(function(result){
             res.json(result);
@@ -34,8 +33,8 @@ module.exports = function (router) {
             req.body._id,
             req.body.title,
             req.body.description,
-            moment(req.body.start, vars.defaultDateFormat).utc().toDate(),
-            moment(req.body.end, vars.defaultDateFormat).utc().toDate(),
+            moment(req.body.start, app.locals.defaultDateFormat).utc().toDate(),
+            moment(req.body.end, app.locals.defaultDateFormat).utc().toDate(),
             req.body.location)
         .then(function(result){
             res.json(result);
