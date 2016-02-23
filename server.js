@@ -11,7 +11,6 @@ var methodOverride = require('method-override');
  */
 global.pgdb = require('./datalayer/pgdb');
 global.Sequelize = require('sequelize');
-//global.sequelize = new Sequelize(pgdb.connectionString());
 global.Q = require('q');
 
 /**
@@ -46,8 +45,3 @@ var server = app.listen(process.env.PORT || 1337, function () {
     var port = server.address().port;
     console.log('Server listening on port %s', port);
 });
-
-//http.createServer(app).listen(app.get("port"), () => {
-//    console.log(`Server listening on port ${app.get("port")}`);
-//});
-//# sourceMappingURL=server.js.map
