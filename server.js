@@ -16,8 +16,9 @@ global.Q = require('q');
 /**
  * Module dependencies.
  */
-var initializer = require("./config/initializer.js"), app = express();
-app.set("port", process.env.PORT || 1337);
+var initializer = require("./config/initializer.js"),
+    app = express();
+
 app.locals.sitename = "HopAbode";
 app.locals.slogan = "Interactive learning platform for the modern world.";
 app.locals.moment = require("moment");
