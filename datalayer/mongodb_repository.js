@@ -1,18 +1,16 @@
-﻿var config = require('../config/mongodbconfig'),
-    format = require('util').format,
+﻿var format = require('util').format,
     assert = require('assert'),
     Promise = require('bluebird'),
     ObjectId = require('mongodb').ObjectID,
     MongoDB = Promise.promisifyAll(require("mongodb"));
     MongoClient = Promise.promisifyAll(MongoDB.MongoClient);
 
-
 function MongoDbService() {
     return this;
 }
 
 function connectClient() {
-    return MongoClient.connectAsync(config.connectionstring); 
+    return MongoClient.connectAsync(process.env.MONGO_URI);
 }
 
 MongoDbService.prototype.all = function(table_name)

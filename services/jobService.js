@@ -1,5 +1,4 @@
-﻿var dbconfig = require('../config/mongodbconfig');
-//var Agenda = require('agenda');
+﻿//var Agenda = require('agenda');
 //var agenda = new Agenda({ db: { address: dbconfig.connectionstring } });
 
 module.exports = {
