@@ -13,16 +13,18 @@ global.Q = require('q');
  */
 
 
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-var favicon = require('serve-favicon');
-var methodOverride = require('method-override');
-var initializer = require("./config/initializer.js"),
-    app = express();
-var webroutes = new(require("./routes/webroutes"))();
-var apiRoutes = new(require("./routes/apiroutes"))();
-
+var express = require('express'),
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    favicon = require('serve-favicon'),
+    methodOverride = require('method-override'),
+    app = express(),
+    webroutes = new(require("./routes/webroutes"))(),
+    apiRoutes = new(require("./routes/apiroutes"))(),
+    jobService = require('./services/jobService'),
+    passportConfig = require('./config/passportconfig'),
+    morgan = require('morgan'),
+    fs = require("fs");
 
 app.locals.sitename = "Profilable";
 app.locals.slogan = "Where your professional life thrives!";
@@ -45,11 +47,34 @@ app.use("/bower_components", express.static(__dirname + "/bower_components"));
 app.use('/api/v1', apiRoutes.getRoutes(app, express.Router()));
 app.use("/", webroutes.getRoutes(app, express.Router()));
 
+//File Paths
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, "public")));
 
-initializer.FilePaths(app, path, express, __dirname);
-initializer.Auth(app);
-initializer.Logs(app);
-//initializer.Jobs(app);
+passportConfig.ConfigurePassport(app);
+
+/**************************************/
+/*      Logs                          */
+/**************************************/
+// create a write stream (in append mode)
+var logStream = fs.createWriteStream(__dirname + '/morganLog.log', { flags: 'a' })
+// You can set morgan to log differently depending on your environment
+if (app.get('env') == 'production') {
+    app.use(morgan('common', {
+        skip: function (req, res) {
+            return res.statusCode < 400
+        },
+        stream: logStream
+    }));
+} else {
+    app.use(morgan('dev'));
+}
+
+/**************************************/
+/*      Job Service                   */
+/**************************************/
+//jobService.schedule();
 
 var server = app.listen(process.env.PORT || 1337, function () {
     var port = server.address().port;
