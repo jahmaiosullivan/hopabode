@@ -1,6 +1,8 @@
-﻿var bcrypt = require('bcryptjs'),
+﻿var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs'),
     deferred = Q.defer(),
     MongoService = require('../datalayer/mongodb_repository'),
+    User = require('../models/user'),
     inherits     = require('util').inherits,
     indicative = new (require('indicative'))();
 
@@ -21,6 +23,16 @@ var validation_rules = {
 };
 
 UserService.prototype.All = function() {
+    mongoose.connect(process.env.MONGO_URI);
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function() {
+        User.find(function (err, users) {
+            if (err) return console.error(err);
+            console.log(users);
+        })
+    });
+
     console.log('finding all users');
     return this.all(tablename);
 }
