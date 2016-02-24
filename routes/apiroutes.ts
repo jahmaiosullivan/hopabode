@@ -5,6 +5,7 @@
 var moment = require('moment');
 var eventservice =  new (require('../services/eventservice'))();
 var userservice = new (require('../services/userservice'))();
+var usercontroller = new (require('../controllers/usercontroller'))();
 var groupservice =  new (require('../services/groupservice'))();
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
@@ -179,40 +180,13 @@ class ApiRoutes implements Routing.IAppRoutes {
         });
 
         /*** User Routes ***/
-        router.route('/users')
-           .all(function (req, res, next) {
-                console.log(req.method, req.url);
-                next();
-            })
-           .get(function (req, res) {
-               return userservice.find().then(function (users) {
-                   res.json(users);
-               });
-            })
-           .post(function (req, res) {
+        router.route('/users').get(usercontroller.get)
+                              .post(function (req, res) {})
+                              .put(function (req, res) {})
+                              .delete(function (req, res) {});
 
-            })
-           .put(function (req, res) {
-                //res.send("Edit / modify an event ...");
-            })
-           .delete(function (req, res) {
-                //eventservice.Delete(req.body.id);
-                //res.send("Deleted event ...");
-            });
-
-        router.route('/users/:id')
-            .get(function (req, res) {
-                return userservice.find(req.params.id).then(function (user) {
-                    res.json(user);
-                })
-            });
-
-        router.get('/users/startswith/:startLetter', function(req, res) {
-            userservice.findByStartLetter(req.params.startLetter)
-                .then(function (users) {
-                    res.json(users);
-                });
-        });
+        router.get('/users/:id', usercontroller.get);
+        router.get('/users/startswith/:startLetter', usercontroller.findStartingWith);
 
         return router;
     }
