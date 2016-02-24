@@ -10,20 +10,7 @@ var UserService = (function () {
             homecity: 'required'
         };
     }
-    UserService.prototype.All = function () {
-        console.log('finding all users');
-        return User.find()
-            .exec()
-            .then(function (users) {
-            console.log(users);
-            return users; // returns a promise
-        })
-            .catch(function (err) {
-            // just need one of these
-            console.log('error:', err);
-        });
-    };
-    UserService.prototype.FindByStartLetter = function (letter) {
+    UserService.prototype.findByStartLetter = function (letter) {
         console.log("Getting users starting with " + letter);
         var regexp = new RegExp("^" + letter);
         return User.find({ 'name.first': regexp })
@@ -32,7 +19,30 @@ var UserService = (function () {
             return users;
         });
     };
-    UserService.prototype.FindByEmail = function (email) {
+    UserService.prototype.find = function (id) {
+        if (!id) {
+            console.log('finding all users');
+            return User.find()
+                .exec()
+                .then(function (users) {
+                console.log(users);
+                return users; // returns a promise
+            })
+                .catch(function (err) {
+                // just need one of these
+                console.log('error:', err);
+            });
+        }
+        else {
+            console.log('finding user with Id  ' + id);
+            return User.findById(id)
+                .exec()
+                .then(function (user) {
+                return user;
+            });
+        }
+    };
+    UserService.prototype.findByEmail = function (email) {
         console.log('finding user with email ' + email);
         return User.find({ email: email })
             .exec()
@@ -40,15 +50,7 @@ var UserService = (function () {
             return user;
         });
     };
-    UserService.prototype.FindById = function (id) {
-        console.log('finding user with Id  ' + id);
-        return User.findById(id)
-            .exec()
-            .then(function (user) {
-            return user;
-        });
-    };
-    UserService.prototype.FindByIds = function (ids) {
+    UserService.prototype.findByIds = function (ids) {
         return User.find({
             '_id': { $in: ids }
         })
@@ -76,7 +78,7 @@ var UserService = (function () {
         });
         return deferred.promise;
     };
-    UserService.prototype.CreateUser = function (email, password, name, gender, agerange, homecity) {
+    UserService.prototype.create = function (email, password, name, gender, agerange, homecity) {
         var hash = bcrypt.hashSync(password, 8);
         var self = this;
         var newuser = { email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity };

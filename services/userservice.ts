@@ -13,22 +13,8 @@ class UserService {
                                     agerange: 'required',
                                     homecity: 'required'
                                 };
-    All(): any {
-        console.log('finding all users');
 
-        return User.find()
-            .exec()
-            .then(function(users) {
-                console.log(users);
-                return users; // returns a promise
-            })
-            .catch(function(err){
-                // just need one of these
-                console.log('error:', err);
-            });
-    }
-
-    FindByStartLetter(letter: string) {
+    findByStartLetter(letter: string) {
         console.log("Getting users starting with " + letter);
 
         var regexp = new RegExp("^"+ letter);
@@ -39,7 +25,32 @@ class UserService {
             });
     },
 
-    FindByEmail (email: string) {
+    find(id?: string): any {
+        if(!id) {
+            console.log('finding all users');
+
+            return User.find()
+                .exec()
+                .then(function(users) {
+                    console.log(users);
+                    return users; // returns a promise
+                })
+                .catch(function(err){
+                    // just need one of these
+                    console.log('error:', err);
+                });
+        }
+        else {
+            console.log('finding user with Id  ' + id);
+            return User.findById(id)
+                .exec()
+                .then(function (user) {
+                    return user;
+                });
+        }
+    },
+
+    findByEmail (email: string) {
         console.log('finding user with email ' + email);
         return User.find({email: email})
             .exec()
@@ -48,16 +59,7 @@ class UserService {
             });
     },
 
-    FindById (id: string) {
-        console.log('finding user with Id  ' + id);
-        return User.findById(id)
-            .exec()
-            .then(function(user) {
-                return user;
-            });
-    },
-
-    FindByIds (ids: any) {
+    findByIds (ids: any) {
         return User.find({
                 '_id': { $in: ids}
             })
@@ -87,7 +89,7 @@ class UserService {
         return deferred.promise;
     }
 
-    CreateUser (email: string, password: string, name: string, gender: string, agerange: string, homecity: string) {
+    create (email: string, password: string, name: string, gender: string, agerange: string, homecity: string) {
         var hash = bcrypt.hashSync(password, 8);
         var self = this;
         var newuser = {email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity};

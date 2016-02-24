@@ -185,7 +185,7 @@ class ApiRoutes implements Routing.IAppRoutes {
                 next();
             })
            .get(function (req, res) {
-               return userservice.All().then(function (users) {
+               return userservice.find().then(function (users) {
                    res.json(users);
                });
             })
@@ -202,13 +202,13 @@ class ApiRoutes implements Routing.IAppRoutes {
 
         router.route('/users/:id')
             .get(function (req, res) {
-                return userservice.FindById(req.params.id).then(function (user) {
+                return userservice.find(req.params.id).then(function (user) {
                     res.json(user);
                 })
             });
 
         router.get('/users/startswith/:startLetter', function(req, res) {
-            userservice.FindByStartLetter(req.params.startLetter)
+            userservice.findByStartLetter(req.params.startLetter)
                 .then(function (users) {
                     res.json(users);
                 });
