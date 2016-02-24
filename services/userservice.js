@@ -1,3 +1,4 @@
+/// <reference path="./IService.ts"/>
 var bcrypt = require('bcryptjs'), deferred = Q.defer(), User = require('../models/user'), indicative = new (require('indicative'))();
 var UserService = (function () {
     function UserService() {

@@ -1,9 +1,11 @@
+/// <reference path="./IService.ts"/>
+
 var bcrypt = require('bcryptjs'),
     deferred = Q.defer(),
     User = require('../models/user'),
     indicative = new (require('indicative'))();
 
-class UserService {
+class UserService implements Services.IService<User> {
 
     private validation_rules = {
                                     email: 'required',
