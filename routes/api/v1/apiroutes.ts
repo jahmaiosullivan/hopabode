@@ -4,16 +4,18 @@
 var moment = require('moment');
 var eventservice =  new (require('../../../services/eventservice'))();
 
-module.exports = function (app, router) {
-    router.route('/event')
+class ApiRoutes {
+    getRoutes(app: any, router: any): any {
+        router.route('/event')
             .all(function (req, res, next) {
                 console.log(req.method, req.url);
                 next();
             })
             .get(function (req, res) {
-                eventservice.FindByGroup(req.query.groupid).then(function(output){
+                res.json('new new events');
+                /*eventservice.FindByGroup(req.query.groupid).then(function (output) {
                     res.send(output);
-                });
+                });*/
             })
             .post(function (req, res) {
                 eventservice.Create(parseInt(req.body.groupid),
@@ -22,7 +24,7 @@ module.exports = function (app, router) {
                     moment(req.body.start, app.locals.defaultDateFormat).utc().toDate(),
                     moment(req.body.enddate, app.locals.defaultDateFormat).utc().toDate(),
                     req.body.location)
-                    .then(function(result){
+                    .then(function (result) {
                         res.json(result);
                     });
             })
@@ -35,7 +37,7 @@ module.exports = function (app, router) {
                     moment(req.body.start, app.locals.defaultDateFormat).utc().toDate(),
                     moment(req.body.end, app.locals.defaultDateFormat).utc().toDate(),
                     req.body.location)
-                    .then(function(result){
+                    .then(function (result) {
                         res.json(result);
                     });
             })
@@ -47,9 +49,12 @@ module.exports = function (app, router) {
                 res.send("Deleted event ...");
             });
 
-
-    return router;
+        return router;
+    }
 }
+
+export = ApiRoutes;
+
 
 
 
