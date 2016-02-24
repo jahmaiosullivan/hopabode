@@ -91,21 +91,20 @@ class UserService implements Services.IService<User> {
         return deferred.promise;
     }
 
-    create (email: string, password: string, name: string, gender: string, agerange: string, homecity: string): any {
-        var hash = bcrypt.hashSync(password, 8);
+    create (user: User): User {
         var self = this;
-        var newuser = {email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity};
+        user.password = bcrypt.hashSync(password, 8);
 
         indicative.validate(this.validation_rules, newuser)
             .then(function () {
-                return self.FindByEmail(email);
+                return self.FindByEmail(user.email);
             })
             .then(function (user) { //case in which user already exists in db
                 if (user) {
                     console.log('username already exists');
                     return deferred.resolve(false); //username already exists
                 } else {
-                    return self.save(tablename, newuser)
+                    return user.save().exec()
                         .then(function (user) {
                             console.log('created a new user');
                             return deferred.resolve(user);

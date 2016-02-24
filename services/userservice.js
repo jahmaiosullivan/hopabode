@@ -79,13 +79,12 @@ var UserService = (function () {
         });
         return deferred.promise;
     };
-    UserService.prototype.create = function (email, password, name, gender, agerange, homecity) {
-        var hash = bcrypt.hashSync(password, 8);
+    UserService.prototype.create = function (user) {
         var self = this;
-        var newuser = { email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity };
+        user.password = bcrypt.hashSync(password, 8);
         indicative.validate(this.validation_rules, newuser)
             .then(function () {
-            return self.FindByEmail(email);
+            return self.FindByEmail(user.email);
         })
             .then(function (user) {
             if (user) {
@@ -93,7 +92,7 @@ var UserService = (function () {
                 return deferred.resolve(false); //username already exists
             }
             else {
-                return self.save(tablename, newuser)
+                return user.save().exec()
                     .then(function (user) {
                     console.log('created a new user');
                     return deferred.resolve(user);
