@@ -1,11 +1,14 @@
 /// <reference path="../../../typings/node/node.d.ts"/>
 /// <reference path="../../../typings/tsd.d.ts"/>
+/// <reference path="./IAppRoutes.ts"/>
 
 var moment = require('moment');
 var eventservice =  new (require('../../../services/eventservice'))();
 
-class ApiRoutes {
-    getRoutes(app: any, router: any): any {
+
+class ApiRoutes implements Routing.IAppRoutes {
+
+    getRoutes(app:any, router:any):any {
         router.route('/event')
             .all(function (req, res, next) {
                 console.log(req.method, req.url);
@@ -14,8 +17,8 @@ class ApiRoutes {
             .get(function (req, res) {
                 res.json('new new events');
                 /*eventservice.FindByGroup(req.query.groupid).then(function (output) {
-                    res.send(output);
-                });*/
+                 res.send(output);
+                 });*/
             })
             .post(function (req, res) {
                 eventservice.Create(parseInt(req.body.groupid),
@@ -54,8 +57,6 @@ class ApiRoutes {
 }
 
 export = ApiRoutes;
-
-
 
 
 
