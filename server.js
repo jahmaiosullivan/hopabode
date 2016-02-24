@@ -1,5 +1,5 @@
 /// <reference path="./typings/node/node.d.ts"/>
-/// <reference path="./routes/api/v1/apiroutes.ts"/>
+/// <reference path="./routes/apiroutes.ts"/>
 require('dotenv').load();
 /**
  * Globals
@@ -15,9 +15,8 @@ var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
 var methodOverride = require('method-override');
 var initializer = require("./config/initializer.js"), app = express();
-var webroute = require("./routes/webroutes")(express.Router());
-var authroutes = require("./routes/webroutes_auth")(app, express.Router());
-var apiRoutes = new (require("./routes/api/v1/apiroutes"))();
+var webroutes = new (require("./routes/webroutes"))();
+var apiRoutes = new (require("./routes/apiroutes"))();
 app.locals.sitename = "Profilable";
 app.locals.slogan = "Where your professional life thrives!";
 app.locals.moment = require("moment");
@@ -32,9 +31,9 @@ app.use(methodOverride("_method"));
 app.use(methodOverride("X-HTTP-Method-Override"));
 app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
+//Routes
 app.use('/api/v1', apiRoutes.getRoutes(app, express.Router()));
-app.use("/", authroutes);
-app.use("/", webroute);
+app.use("/", webroutes.getRoutes(app, express.Router()));
 initializer.FilePaths(app, path, express, __dirname);
 initializer.Auth(app);
 initializer.Logs(app);
