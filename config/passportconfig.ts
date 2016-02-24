@@ -1,3 +1,5 @@
+/// <reference path="./typings/node/node.d.ts"/>
+
 var userservice = require('../services/userservice');
 
 import passportlocal = require('passport-local');

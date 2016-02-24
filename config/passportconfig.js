@@ -1,3 +1,4 @@
+/// <reference path="./typings/node/node.d.ts"/>
 var userservice = require('../services/userservice');
 var passportlocal = require('passport-local');
 var session = require('express-session');

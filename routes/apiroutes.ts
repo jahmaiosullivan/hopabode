@@ -4,8 +4,8 @@
 
 var moment = require('moment');
 var eventservice =  new (require('../services/eventservice'))();
+var userservice = new (require('../services/userservice'))();
 var groupservice =  new (require('../services/groupservice'))();
-var userservice =  require('../services/userservice');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var fs = require("fs");

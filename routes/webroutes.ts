@@ -2,11 +2,12 @@
 /// <reference path="../typings/passport.d.ts"/>
 /// <reference path="../typings/tsd.d.ts"/>
 /// <reference path="./IAppRoutes.ts"/>
+/// <reference path="../typings/tsd.d.ts"/>
 
 import express = require('express');
 import passport = require('passport');
 var viewsFolder = 'auth';
-var userservice = require('../services/userservice');
+var userservice = new (require('../services/userservice'))();
 var authHelper = require('./authHelper');
 
 class WebRoutes implements Routing.IAppRoutes {
