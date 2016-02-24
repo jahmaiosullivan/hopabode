@@ -1,12 +1,9 @@
 /// <reference path="../typings/node/node.d.ts"/>
 /// <reference path="../typings/passport.d.ts"/>
-/// <reference path="../typings/tsd.d.ts"/>
-/// <reference path="./IAppRoutes.ts"/>
-/// <reference path="../typings/tsd.d.ts"/>
 var passport = require('passport');
 var viewsFolder = 'auth';
 var userservice = new (require('../services/userservice'))();
-var authHelper = require('./authHelper');
+var authHelper = require('./middleware/authHelper');
 var WebRoutes = (function () {
     function WebRoutes() {
     }

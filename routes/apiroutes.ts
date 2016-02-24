@@ -1,13 +1,12 @@
 /// <reference path="../typings/node/node.d.ts"/>
 /// <reference path="../typings/tsd.d.ts"/>
-/// <reference path="./IAppRoutes.ts"/>
 
 var usercontroller = new (require('../controllers/usercontroller'))();
 var imagecontroller =  new (require('../controllers/imagecontroller'))();
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 
-class ApiRoutes implements Routing.IAppRoutes {
+class ApiRoutes {
 
     getRoutes(app: express.Application, router: express.Router): express.Router {
 
