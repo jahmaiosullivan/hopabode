@@ -41,7 +41,7 @@ module.exports = {
         passport.use(new passportlocal.Strategy(
             function (username, password, done) {
                 console.log('validating user');
-                userservice.validateUser(username, password)
+                userservice.validate(username, password)
                     .then(function (user) {
                         if (user) {
                             return done(null, user);
@@ -58,7 +58,7 @@ module.exports = {
                 usernameField: 'email'
             },
             function (req, username, password, done) {
-                userservice.CreateUser(username, password, req.body.name, req.body.gender, req.body.agerange, req.body.homecity)
+                userservice.create(username, password, req.body.name, req.body.gender, req.body.agerange, req.body.homecity)
                     .then(function (user) {
                         if (user) {
                             console.log("REGISTERED: " + user.email);

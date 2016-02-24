@@ -14,7 +14,7 @@ class UserService {
                                     homecity: 'required'
                                 };
 
-    findByStartLetter(letter: string) {
+    findByStartLetter(letter: string): Model<User> {
         console.log("Getting users starting with " + letter);
 
         var regexp = new RegExp("^"+ letter);
@@ -25,7 +25,7 @@ class UserService {
             });
     },
 
-    find(id?: string): any {
+    find(id?: string): ArrayList<Model<User>> {
         if(!id) {
             console.log('finding all users');
 
@@ -50,7 +50,7 @@ class UserService {
         }
     },
 
-    findByEmail (email: string) {
+    findByEmail (email: string): Model<User> {
         console.log('finding user with email ' + email);
         return User.find({email: email})
             .exec()
@@ -59,7 +59,7 @@ class UserService {
             });
     },
 
-    findByIds (ids: any) {
+    findByIds (ids: any): ArrayList<Model<User>> {
         return User.find({
                 '_id': { $in: ids}
             })
@@ -74,7 +74,7 @@ class UserService {
             });
     }
 
-    validateUser (email: string, password: string) {
+    validate (email: string, password: string): any {
         this.FindByEmail(email)
             .then(function (user) {
                 console.log("FOUND USER " + email);
@@ -89,7 +89,7 @@ class UserService {
         return deferred.promise;
     }
 
-    create (email: string, password: string, name: string, gender: string, agerange: string, homecity: string) {
+    create (email: string, password: string, name: string, gender: string, agerange: string, homecity: string): any {
         var hash = bcrypt.hashSync(password, 8);
         var self = this;
         var newuser = {email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity};

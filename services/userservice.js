@@ -64,7 +64,7 @@ var UserService = (function () {
             console.log('error:', err);
         });
     };
-    UserService.prototype.validateUser = function (email, password) {
+    UserService.prototype.validate = function (email, password) {
         this.FindByEmail(email)
             .then(function (user) {
             console.log("FOUND USER " + email);
