@@ -179,15 +179,15 @@ class ApiRoutes implements Routing.IAppRoutes {
         });
 
         /*** User Routes ***/
-       router.route('/users')
+        router.route('/users')
            .all(function (req, res, next) {
                 console.log(req.method, req.url);
                 next();
             })
            .get(function (req, res) {
-                return userservice.All().then(function(users){
-                    res.json(users);
-                });
+               return userservice.All().then(function (users) {
+                   res.json(users);
+               });
             })
            .post(function (req, res) {
 
@@ -198,6 +198,13 @@ class ApiRoutes implements Routing.IAppRoutes {
            .delete(function (req, res) {
                 //eventservice.Delete(req.body.id);
                 //res.send("Deleted event ...");
+            });
+
+        router.route('/users/:id')
+            .get(function (req, res) {
+                return userservice.FindById(req.params.id).then(function (user) {
+                    res.json(user);
+                })
             });
 
         router.get('/users/startswith/:startLetter', function(req, res) {

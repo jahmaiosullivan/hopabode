@@ -17,36 +17,45 @@ module.exports = {
     All: function () {
         console.log('finding all users');
 
-        return User.find().exec().then(function(users) {
-                console.log(users);
-                return users; // returns a promise
-            })
-            .catch(function(err){
-                // just need one of these
-                console.log('error:', err);
-            });
+        return User.find()
+                   .exec()
+                   .then(function(users) {
+                        console.log(users);
+                        return users; // returns a promise
+                    })
+                    .catch(function(err){
+                        // just need one of these
+                        console.log('error:', err);
+                    });
     },
 
     FindByStartLetter: function(letter) {
         console.log("Getting users starting with " + letter);
+
         var regexp = new RegExp("^"+ letter);
-        return User.find({'name.first': regexp}).exec().then(function(users) {
-            return users;
-        });
+        return User.find({'name.first': regexp})
+                   .exec()
+                   .then(function(users) {
+                        return users;
+                    });
     },
 
     FindByEmail: function (email) {
         console.log('finding user with email ' + email);
-        return User.find({email: email}).exec().then(function(user) {
-            return user;
-        });
+        return User.find({email: email})
+                   .exec()
+                   .then(function(user) {
+                        return user;
+                    });
     },
 
     FindById: function (id) {
         console.log('finding user with Id  ' + id);
-        return User.findById(id).exec().then(function(user) {
-            return user;
-        });
+        return User.findById(id)
+                   .exec()
+                   .then(function(user) {
+                        return user;
+                    });
     },
 
     FindByIds: function (ids) {
