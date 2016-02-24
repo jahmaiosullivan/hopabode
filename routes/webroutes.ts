@@ -6,7 +6,7 @@
 import express = require('express');
 import passport = require('passport');
 var viewsFolder = 'auth';
-var userservice = new (require('../services/userservice'))();
+var userservice = require('../services/userservice');
 var authHelper = require('./authHelper');
 
 class WebRoutes implements Routing.IAppRoutes {

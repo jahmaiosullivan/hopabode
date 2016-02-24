@@ -1,17 +1,7 @@
-﻿var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs'),
+﻿var bcrypt = require('bcryptjs'),
     deferred = Q.defer(),
-    MongoService = require('../datalayer/mongodb_repository'),
     User = require('../models/user'),
-    inherits     = require('util').inherits,
     indicative = new (require('indicative'))();
-
-var tablename = 'users';
-
-function UserService() {
-    MongoService.call(this);
-}
-inherits(UserService, MongoService);
 
 var validation_rules = {
     email: 'required',
@@ -22,65 +12,83 @@ var validation_rules = {
     homecity: 'required'
 };
 
-UserService.prototype.All = function() {
-    mongoose.connect(process.env.MONGO_URI);
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function() {
-        User.find(function (err, users) {
-            if (err) return console.error(err);
-            console.log(users);
-        })
-    });
+module.exports = {
 
-    console.log('finding all users');
-    return this.all(tablename);
-}
+    All: function () {
+        console.log('finding all users');
 
-UserService.prototype.FindByStartLetter = function(letter) {
-    console.log("Getting users for tablename " + tablename);
-    return this.find(tablename, { name : new RegExp('^' + letter, 'i') });
-}
+        return User.find().exec().then(function(users) {
+                console.log(users);
+                return users; // returns a promise
+            })
+            .catch(function(err){
+                // just need one of these
+                console.log('error:', err);
+            });
+    },
 
-UserService.prototype.FindByEmail = function(email) {
-    console.log('finding user ' + email);
-    return this.single(tablename, {'email': email});
-}
-
-UserService.prototype.FindById = function(id) {
-    console.log('finding user with Id  ' + id);
-    return this.findById(tablename, id);
-}
-
-UserService.prototype.FindByIds = function(ids) {
-    return this.findByIds(tablename, ids);
-}
-
-UserService.prototype.validateUser = function (email, password) {
-    this.FindByEmail(email)
-        .then(function (user) {
-            console.log("FOUND USER " + email);
-            var hash = user.password;
-            console.log('comparison result:' + bcrypt.compareSync(password, hash));
-            if (!bcrypt.compareSync(password, hash)) {
-                console.log("PASSWORDS NOT MATCH");
-                return deferred.resolve(false);
-            }
-            return deferred.resolve(user);
+    FindByStartLetter: function(letter) {
+        console.log("Getting users starting with " + letter);
+        var regexp = new RegExp("^"+ letter);
+        return User.find({'name.first': regexp}).exec().then(function(users) {
+            return users;
         });
-    return deferred.promise;
-}
+    },
 
-UserService.prototype.CreateUser = function(email, password, name, gender, agerange, homecity) {
-    var hash = bcrypt.hashSync(password, 8);
-    var self = this;
-    var newuser = { email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity };
+    FindByEmail: function (email) {
+        console.log('finding user with email ' + email);
+        return User.find({email: email}).exec().then(function(user) {
+            return user;
+        });
+    },
 
-    indicative.validate(validation_rules,newuser)
-             .then(function(){
+    FindById: function (id) {
+        console.log('finding user with Id  ' + id);
+        return User.findById(id).exec().then(function(user) {
+            return user;
+        });
+    },
+
+    FindByIds: function (ids) {
+        return User.find({
+                    '_id': { $in: ids}
+                    })
+                .exec()
+                .then(function(users) {
+                    console.log(users);
+                    return users; // returns a promise
+                })
+                .catch(function(err){
+                    // just need one of these
+                    console.log('error:', err);
+                });
+    },
+
+    validateUser: function (email, password) {
+        this.FindByEmail(email)
+            .then(function (user) {
+                console.log("FOUND USER " + email);
+                var hash = user.password;
+                console.log('comparison result:' + bcrypt.compareSync(password, hash));
+                if (!bcrypt.compareSync(password, hash)) {
+                    console.log("PASSWORDS NOT MATCH");
+                    return deferred.resolve(false);
+                }
+                return deferred.resolve(user);
+            });
+        return deferred.promise;
+    },
+
+    CreateUser: function (email, password, name, gender, agerange, homecity) {
+        var hash = bcrypt.hashSync(password, 8);
+        var self = this;
+        var newuser = {email: email, password: hash, name: name, gender: gender, agerange: agerange, homecity: homecity};
+
+        indicative.validate(validation_rules, newuser)
+            .then(function () {
                 return self.FindByEmail(email);
-             })
-             .then(function (user) { //case in which user already exists in db
+            })
+            .then(function (user) { //case in which user already exists in db
                 if (user) {
                     console.log('username already exists');
                     return deferred.resolve(false); //username already exists
@@ -94,7 +102,6 @@ UserService.prototype.CreateUser = function(email, password, name, gender, agera
             });
 
 
-    return deferred.promise;
+        return deferred.promise;
+    }
 }
-
-module.exports = UserService;

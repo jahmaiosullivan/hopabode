@@ -9,6 +9,8 @@ global.Q = require('q');
 /**
  * Module dependencies.
  */
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 var express = require('express'), path = require('path'), bodyParser = require('body-parser'), favicon = require('serve-favicon'), methodOverride = require('method-override'), app = express(), webroutes = new (require("./routes/webroutes"))(), apiRoutes = new (require("./routes/apiroutes"))(), jobService = require('./services/jobService'), passportConfig = require('./config/passportconfig'), morgan = require('morgan'), fs = require("fs");
 app.locals.sitename = "Profilable";
 app.locals.slogan = "Where your professional life thrives!";
@@ -53,8 +55,13 @@ else {
 /*      Job Service                   */
 /**************************************/
 //jobService.schedule();
-var server = app.listen(process.env.PORT || 1337, function () {
-    var port = server.address().port;
-    console.log('Server listening on port %s', port);
+mongoose.connect(process.env.MONGO_URI);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+    var server = app.listen(process.env.PORT || 1337, function () {
+        var port = server.address().port;
+        console.log('Server listening on port %s', port);
+    });
 });
 //# sourceMappingURL=server.js.map

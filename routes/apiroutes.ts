@@ -5,7 +5,7 @@
 var moment = require('moment');
 var eventservice =  new (require('../services/eventservice'))();
 var groupservice =  new (require('../services/groupservice'))();
-var userservice =  new (require('../services/userservice'))();
+var userservice =  require('../services/userservice');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 var fs = require("fs");
@@ -199,6 +199,13 @@ class ApiRoutes implements Routing.IAppRoutes {
                 //eventservice.Delete(req.body.id);
                 //res.send("Deleted event ...");
             });
+
+        router.get('/users/startswith/:startLetter', function(req, res) {
+            userservice.FindByStartLetter(req.params.startLetter)
+                .then(function (users) {
+                    res.json(users);
+                });
+        });
 
         return router;
     }

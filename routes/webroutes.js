@@ -4,7 +4,7 @@
 /// <reference path="./IAppRoutes.ts"/>
 var passport = require('passport');
 var viewsFolder = 'auth';
-var userservice = new (require('../services/userservice'))();
+var userservice = require('../services/userservice');
 var authHelper = require('./authHelper');
 var WebRoutes = (function () {
     function WebRoutes() {

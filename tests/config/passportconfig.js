@@ -1,4 +1,4 @@
-var userservice = new (require('../services/userservice'))();
+var userservice = require('../services/userservice');
 var passportlocal = require('passport-local');
 var session = require('express-session');
 var passport = require('passport');
