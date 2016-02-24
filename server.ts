@@ -27,6 +27,8 @@ var express = require('express'),
     passportConfig = require('./config/passportconfig'),
     morgan = require('morgan'),
     fs = require("fs");
+var exphbs  = require('express-handlebars');
+
 
 app.locals.sitename = "Profilable";
 app.locals.slogan = "Where your professional life thrives!";
@@ -51,7 +53,8 @@ app.use("/", webroutes.getRoutes(app, express.Router()));
 
 //File Paths
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 app.use(express.static(path.join(__dirname, "public")));
 
 passportConfig.ConfigurePassport(app);

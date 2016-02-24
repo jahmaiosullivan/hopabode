@@ -10,6 +10,16 @@ var authHelper = require('./middleware/authHelper');
 class WebRoutes {
 
     getRoutes(app:any, router:any):any {
+
+        router.get('/test', authHelper.isAnonymous, (req: express.Request, res: express.Response) => {
+            res.render('handlebarstest', { title: 'my other page' });
+        });
+
+        router.get('/test2', authHelper.isAnonymous, (req: express.Request, res: express.Response) => {
+            res.render('handlebarstest', { title: 'my other page', layout: 'adminlayout' });
+        });
+
+
         // define the home page route
         router.get('', authHelper.isAnonymous, (req: express.Request, res: express.Response) => {
             res.render('home/landingpg', res);

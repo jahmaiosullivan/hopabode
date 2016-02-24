@@ -8,6 +8,12 @@ var WebRoutes = (function () {
     function WebRoutes() {
     }
     WebRoutes.prototype.getRoutes = function (app, router) {
+        router.get('/test', authHelper.isAnonymous, function (req, res) {
+            res.render('handlebarstest', { title: 'my other page' });
+        });
+        router.get('/test2', authHelper.isAnonymous, function (req, res) {
+            res.render('handlebarstest', { title: 'my other page', layout: 'adminlayout' });
+        });
         // define the home page route
         router.get('', authHelper.isAnonymous, function (req, res) {
             res.render('home/landingpg', res);
