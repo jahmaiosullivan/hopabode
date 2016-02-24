@@ -9,7 +9,7 @@ var multipartMiddleware = multipart();
 
 class ApiRoutes implements Routing.IAppRoutes {
 
-    getRoutes(app:any, router:any):any {
+    getRoutes(app: express.Application, router: express.Router):any {
 
         /*** Image Routes **/
         router.post('/upload', multipartMiddleware, imagecontroller.post);
