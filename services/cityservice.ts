@@ -3,7 +3,6 @@
 /// <reference path="./IService.ts"/>
 ///<reference path="../typings/mongoose.d.ts"/>
 ///<reference path="../models/city.ts"/>
-///<reference path="../models/ICity.ts"/>
 
 
 import City = require("../models/city");
@@ -58,7 +57,7 @@ class CityService {
     }
 
     findByName (name: string): any {
-        return City.find({name: name})
+        return City.find({name: name}).exec()
             .then(function(city) {
                 return city;
             });

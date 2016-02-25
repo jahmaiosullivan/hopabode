@@ -2,12 +2,10 @@
 /// <reference path="../typings/mongoose.d.ts"/>
 
 import * as mongoose from 'mongoose';
-import {ICity} from "./ICity";
+import {ICityModel} from "./ICity";
 var timestamps = require('mongoose-timestamp');
 
-interface ICityModel extends ICity, mongoose.Document { }
-
-var citySchema = new  mongoose.Schema({
+var citySchema = new mongoose.Schema({
     name: {type:String, required: true},
     location: {type:String, required: true},
     about: String,

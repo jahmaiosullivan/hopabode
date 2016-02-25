@@ -1,5 +1,6 @@
+/// <reference path="../typings/node/node.d.ts"/>
 /// <reference path="./IService.ts"/>
-var bcrypt = require('bcryptjs'), deferred = Q.defer(), User = require('../models/user'), indicative = new (require('indicative'))();
+var bcrypt = require('bcryptjs'), User = require('../models/user'), deferred = global.Q.defer(), indicative = new (require('indicative'))();
 var UserService = (function () {
     function UserService() {
         this.validation_rules = {
@@ -66,7 +67,7 @@ var UserService = (function () {
         });
     };
     UserService.prototype.validate = function (email, password) {
-        this.FindByEmail(email)
+        this.findByEmail(email)
             .then(function (user) {
             console.log("FOUND USER " + email);
             var hash = user.password;
@@ -79,12 +80,12 @@ var UserService = (function () {
         });
         return deferred.promise;
     };
-    UserService.prototype.create = function (user) {
+    UserService.prototype.create = function (newuser) {
         var self = this;
-        user.password = bcrypt.hashSync(password, 8);
+        newuser.password = bcrypt.hashSync(newuser.password, 8);
         indicative.validate(this.validation_rules, newuser)
             .then(function () {
-            return self.findByEmail(user.email);
+            return self.findByEmail(newuser.email);
         })
             .then(function (user) {
             if (user) {
@@ -92,11 +93,7 @@ var UserService = (function () {
                 return deferred.resolve(false); //username already exists
             }
             else {
-                return user.save().exec()
-                    .then(function (user) {
-                    console.log('created a new user');
-                    return deferred.resolve(user);
-                });
+                return user.save();
             }
         });
         return deferred.promise;

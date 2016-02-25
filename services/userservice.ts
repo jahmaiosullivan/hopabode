@@ -1,11 +1,14 @@
+/// <reference path="../typings/node/node.d.ts"/>
 /// <reference path="./IService.ts"/>
 
+
+import {IUserModel} from "../models/IUser";
 var bcrypt = require('bcryptjs'),
-    deferred = Q.defer(),
     User = require('../models/user'),
+    deferred = global.Q.defer(),
     indicative = new (require('indicative'))();
 
-class UserService implements Services.IService<User> {
+class UserService implements Services.IService<IUserModel> {
 
     private validation_rules = {
                                     email: 'required',
@@ -16,7 +19,7 @@ class UserService implements Services.IService<User> {
                                     homecity: 'required'
                                 };
 
-    findByStartLetter(letter: string): Model<User> {
+    findByStartLetter(letter: string): IUserModel {
         console.log("Getting users starting with " + letter);
 
         var regexp = new RegExp("^"+ letter);
@@ -25,9 +28,9 @@ class UserService implements Services.IService<User> {
             .then(function(users) {
                 return users;
             });
-    },
+    }
 
-    find(id?: string): ArrayList<Model<User>> {
+    find(id?: string): Array<IUserModel> {
         if(!id) {
             console.log('finding all users');
 
@@ -50,18 +53,18 @@ class UserService implements Services.IService<User> {
                     return user;
                 });
         }
-    },
+    }
 
-    findByEmail (email: string): Model<User> {
+    findByEmail (email: string): IUserModel {
         console.log('finding user with email ' + email);
         return User.find({email: email})
             .exec()
             .then(function(user) {
                 return user;
             });
-    },
+    }
 
-    findByIds (ids: any): ArrayList<Model<User>> {
+    findByIds (ids: any): Array<IUserModel> {
         return User.find({
                 '_id': { $in: ids}
             })
@@ -77,7 +80,7 @@ class UserService implements Services.IService<User> {
     }
 
     validate (email: string, password: string): any {
-        this.FindByEmail(email)
+        this.findByEmail(email)
             .then(function (user) {
                 console.log("FOUND USER " + email);
                 var hash = user.password;
@@ -91,24 +94,21 @@ class UserService implements Services.IService<User> {
         return deferred.promise;
     }
 
-    create (user: User): User {
+    create (newuser: IUserModel): IUserModel {
         var self = this;
-        user.password = bcrypt.hashSync(password, 8);
+        newuser.password = bcrypt.hashSync(newuser.password, 8);
+
 
         indicative.validate(this.validation_rules, newuser)
             .then(function () {
-                return self.findByEmail(user.email);
+                return self.findByEmail(newuser.email);
             })
             .then(function (user) { //case in which user already exists in db
                 if (user) {
                     console.log('username already exists');
                     return deferred.resolve(false); //username already exists
                 } else {
-                    return user.save().exec()
-                        .then(function (user) {
-                            console.log('created a new user');
-                            return deferred.resolve(user);
-                        });
+                    return user.save();
                 }
             });
 

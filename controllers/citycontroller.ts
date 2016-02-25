@@ -19,7 +19,7 @@ class CityController {
 
         cityservice.create(city).then(function (city) {
             res.json(city);
-        })
+        };
     }
 }
 
