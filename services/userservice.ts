@@ -97,7 +97,7 @@ class UserService implements Services.IService<User> {
 
         indicative.validate(this.validation_rules, newuser)
             .then(function () {
-                return self.FindByEmail(user.email);
+                return self.findByEmail(user.email);
             })
             .then(function (user) { //case in which user already exists in db
                 if (user) {

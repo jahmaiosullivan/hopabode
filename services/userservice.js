@@ -84,7 +84,7 @@ var UserService = (function () {
         user.password = bcrypt.hashSync(password, 8);
         indicative.validate(this.validation_rules, newuser)
             .then(function () {
-            return self.FindByEmail(user.email);
+            return self.findByEmail(user.email);
         })
             .then(function (user) {
             if (user) {
