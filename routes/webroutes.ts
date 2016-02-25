@@ -6,7 +6,7 @@ import passport = require('passport');
 var viewsFolder = 'auth';
 var userservice = new (require('../services/userservice'))();
 var authHelper = require('./middleware/authHelper');
-import City = require("../models/City");
+import City = require("../models/city");
 
 class WebRoutes {
 

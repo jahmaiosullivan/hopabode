@@ -13,5 +13,4 @@ var citySchema = new mongoose.Schema({
 });
 citySchema.plugin(timestamps);
 var City = mongoose.model<ICityModel>("City", citySchema);
-
 export = City;
