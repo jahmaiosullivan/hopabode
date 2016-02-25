@@ -21,8 +21,8 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     methodOverride = require('method-override'),
     app = express(),
-    webroutes = require("./routes/webroutes"),
-    apiRoutes = require("./routes/apiroutes"),
+    webroutes = new(require("./routes/webroutes"))(),
+    apiRoutes = new(require("./routes/apiroutes"))(),
     jobService = require('./services/jobService'),
     passportConfig = require('./config/passportconfig'),
     morgan = require('morgan'),
@@ -48,8 +48,8 @@ app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
 
 //Routes
-app.use('/api/v1', new apiRoutes().getRoutes(app, express.Router()));
-app.use("/", new webroutes().getRoutes(app, express.Router()));
+app.use('/api/v1', apiRoutes.getRoutes(app, express.Router()));
+app.use("/", webroutes.getRoutes(app, express.Router()));
 
 //File Paths
 app.set('views', path.join(__dirname, 'views'));

@@ -11,7 +11,7 @@ global.Q = require('q');
  */
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-var express = require('express'), path = require('path'), bodyParser = require('body-parser'), favicon = require('serve-favicon'), methodOverride = require('method-override'), app = express(), webroutes = require("./routes/webroutes"), apiRoutes = require("./routes/apiroutes"), jobService = require('./services/jobService'), passportConfig = require('./config/passportconfig'), morgan = require('morgan'), fs = require("fs");
+var express = require('express'), path = require('path'), bodyParser = require('body-parser'), favicon = require('serve-favicon'), methodOverride = require('method-override'), app = express(), webroutes = new (require("./routes/webroutes"))(), apiRoutes = new (require("./routes/apiroutes"))(), jobService = require('./services/jobService'), passportConfig = require('./config/passportconfig'), morgan = require('morgan'), fs = require("fs");
 var exphbs = require('express-handlebars');
 app.locals.sitename = "Profilable";
 app.locals.slogan = "Where your professional life thrives!";
@@ -28,8 +28,8 @@ app.use(methodOverride("X-HTTP-Method-Override"));
 app.use(favicon(__dirname + "/public/favicon.ico"));
 app.use("/bower_components", express.static(__dirname + "/bower_components"));
 //Routes
-app.use('/api/v1', new apiRoutes().getRoutes(app, express.Router()));
-app.use("/", new webroutes().getRoutes(app, express.Router()));
+app.use('/api/v1', apiRoutes.getRoutes(app, express.Router()));
+app.use("/", webroutes.getRoutes(app, express.Router()));
 //File Paths
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }));
