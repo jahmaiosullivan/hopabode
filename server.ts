@@ -1,7 +1,7 @@
 /// <reference path="./typings/node/node.d.ts"/>
 /// <reference path="./routes/apiroutes.ts"/>
 
-//require('dotenv').load();
+require('dotenv').load();
 
 /**
  * Globals
