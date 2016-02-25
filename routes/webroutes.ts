@@ -6,13 +6,16 @@ import passport = require('passport');
 var viewsFolder = 'auth';
 var userservice = new (require('../services/userservice'))();
 var authHelper = require('./middleware/authHelper');
+import City = require("../models/city");
 
 class WebRoutes {
 
     getRoutes(app:any, router:any):any {
 
         router.get('/test', authHelper.isAnonymous, (req: express.Request, res: express.Response) => {
-            res.render('handlebarstest', { title: 'my other page' });
+            City.find({}).exec().then(function(cities){
+                res.render('handlebarstest', { title: 'my other page', city: cities[0] });
+            });
         });
 
         router.get('/test2', authHelper.isAnonymous, (req: express.Request, res: express.Response) => {

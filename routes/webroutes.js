@@ -4,12 +4,15 @@ var passport = require('passport');
 var viewsFolder = 'auth';
 var userservice = new (require('../services/userservice'))();
 var authHelper = require('./middleware/authHelper');
+var City = require("../models/city");
 var WebRoutes = (function () {
     function WebRoutes() {
     }
     WebRoutes.prototype.getRoutes = function (app, router) {
         router.get('/test', authHelper.isAnonymous, function (req, res) {
-            res.render('handlebarstest', { title: 'my other page' });
+            City.find({}).exec().then(function (cities) {
+                res.render('handlebarstest', { title: 'my other page', city: cities[0] });
+            });
         });
         router.get('/test2', authHelper.isAnonymous, function (req, res) {
             res.render('handlebarstest', { title: 'my other page', layout: 'adminlayout' });
