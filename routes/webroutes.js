@@ -16,7 +16,7 @@ var WebRoutes = (function () {
         });
         // define the home page route
         router.get('', authHelper.isAnonymous, function (req, res) {
-            res.render('home/landingpg', res);
+            res.render('home/landingpg', { title: app.locals.sitename, layout: 'landingpg' });
         });
         /************************** Users *************************************************/
         router.get('/users', authHelper.isAuthenticated, function (req, res) {

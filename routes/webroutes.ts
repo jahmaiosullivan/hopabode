@@ -22,7 +22,7 @@ class WebRoutes {
 
         // define the home page route
         router.get('', authHelper.isAnonymous, (req: express.Request, res: express.Response) => {
-            res.render('home/landingpg', res);
+            res.render('home/landingpg', { title: app.locals.sitename, layout: 'landingpg' });
         });
 
 
