@@ -24,15 +24,6 @@ class CityController {
             .then(function () {
                 res.json(city);
             });
-
-
-        /* city.validate()
-         .then(function() {
-         return city.save();
-         })
-         .then(function(saved_model) {
-         res.json(saved_model);
-         });*/
     }
 }
 
