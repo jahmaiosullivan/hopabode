@@ -17,19 +17,6 @@ citySchema.methods.isValid = function () {
     var validated = indicative.validate(validation_rules, this);
     return validated;
 };
-/*
-return indicative.validate(this.validation_rules, city)
-    .then(function () {
-        return self.findByName(city.name);
-    })
-    .then(function (record) {
-        if (record.length > 0) {
-            console.log('city already exists');
-            return null;
-        } else {
-            return city.save();
-        }
-    });*/
 citySchema.plugin(timestamps);
 var City = mongoose.model("City", citySchema);
 module.exports = City;
