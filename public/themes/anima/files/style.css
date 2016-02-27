@@ -242,17 +242,18 @@ html.no-csstransforms3d .headroom {
     background-repeat: no-repeat;
     background-color: #23222d; }
     .big-header-container .main-header .main-header-content {
-      padding-top: 9.375rem;
-      padding-bottom: 3.75rem; }
+      padding-top: 1.25rem;
+      padding-bottom: 0.25rem; }
       .big-header-container .main-header .main-header-content .blog-logo img {
-        max-width: 7.5rem; }
+        max-width: 7.5rem;
+      }
     .big-header-container .main-header .page-title {
       color: white;
       font-weight: 800;
       font-size: 2.875rem; }
       @media only screen and (min-width: 48em) {
         .big-header-container .main-header .page-title {
-          font-size: 3.75rem; } }
+          font-size: 0.75rem; } }
       @media only screen and (min-width: 64em) {
         .big-header-container .main-header .page-title {
           font-size: 5rem; } }

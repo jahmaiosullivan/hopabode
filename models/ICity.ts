@@ -5,5 +5,6 @@ export interface ICityModel extends mongoose.Document {
     name: String,
     location: String,
     about?: String,
-    image?: String
+    image?: String,
+    isValid(): any;
 }

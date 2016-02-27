@@ -157,6 +157,8 @@ declare module "mongoose" {
     requiredPaths(): string[];
     set(key: string, value: any): void;
     static(name: string, fn: Function): Schema;
+    methods: any;
+    statics: any;
     virtual(name: string, options?: Object): VirtualType;
     virtualpath(name: string): VirtualType;
   }
