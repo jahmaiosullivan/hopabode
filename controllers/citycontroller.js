@@ -1,5 +1,6 @@
 /// <reference path="../typings/node/node.d.ts"/>
-var City = require("../models/city");
+var city = require("../models/city");
+var City = city.CityModel; //alias
 var CityController = (function () {
     function CityController() {
     }

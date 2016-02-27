@@ -8,5 +8,5 @@ var postSchema = new mongoose.Schema({
     images: [String]
 });
 postSchema.plugin(timestamps);
-module.exports = mongoose.model("Post", postSchema);
+exports.PostModel = mongoose.model("Post", postSchema);
 //# sourceMappingURL=Post.js.map

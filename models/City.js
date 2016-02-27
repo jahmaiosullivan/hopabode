@@ -3,10 +3,9 @@
 var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 var indicative = new (require('indicative'))();
-var validation_rules = {
-    name: 'required|min:3',
-    location: 'required|min:3'
-};
+/***********************************************************/
+/*      City Model                                         */
+/***********************************************************/
 var citySchema = new mongoose.Schema({
     name: { type: String, required: true },
     location: { type: String, required: true },
@@ -14,10 +13,13 @@ var citySchema = new mongoose.Schema({
     image: String
 });
 citySchema.methods.isValid = function () {
+    var validation_rules = {
+        name: 'required|min:3',
+        location: 'required|min:3'
+    };
     var validated = indicative.validate(validation_rules, this);
     return validated;
 };
 citySchema.plugin(timestamps);
-var City = mongoose.model("City", citySchema);
-module.exports = City;
+exports.CityModel = mongoose.model("City", citySchema);
 //# sourceMappingURL=City.js.map

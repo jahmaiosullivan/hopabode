@@ -1,7 +1,8 @@
 /// <reference path="../typings/node/node.d.ts"/>
 
 import express = require("express");
-import City = require("../models/city");
+import city = require("../models/city");
+import City = city.CityModel; //alias
 
 class CityController {
     get(req:express.Request, res:express.Response):void {

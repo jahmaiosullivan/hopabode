@@ -1,14 +1,15 @@
 /// <reference path="../typings/node/node.d.ts"/>
-/// <reference path="./IService.ts"/>
 
 
-import {IUserModel} from "../models/IUser";
+import {IUserModel} from "../models/User";
 var bcrypt = require('bcryptjs'),
-    User = require('../models/user'),
+    user = require('../models/user'),
+    User = user.User,
     deferred = global.Q.defer(),
     indicative = new (require('indicative'))();
 
-class UserService implements Services.IService<IUserModel> {
+
+class UserService {
 
     private validation_rules = {
                                     email: 'required',

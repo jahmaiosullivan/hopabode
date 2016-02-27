@@ -2,7 +2,6 @@
 /// <reference path="../typings/mongoose.d.ts"/>
 
 import * as mongoose from 'mongoose';
-import {IPostModel} from "./IPost";
 var timestamps = require('mongoose-timestamp');
 
 var postSchema = new mongoose.Schema({
@@ -11,4 +10,11 @@ var postSchema = new mongoose.Schema({
     images: [String]
 });
 postSchema.plugin(timestamps);
-export = mongoose.model<IPostModel>("Post", postSchema);
+
+export interface IPostModel extends mongoose.Document {
+    title: String,
+    content: String,
+    images: [String]
+}
+
+export var PostModel = mongoose.model<IPostModel>("Post", postSchema);

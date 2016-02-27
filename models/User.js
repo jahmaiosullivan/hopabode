@@ -8,6 +8,5 @@ var userSchema = new mongoose.Schema({
     logourl: String
 });
 userSchema.plugin(timestamps);
-var User = mongoose.model("User", userSchema);
-module.exports = User;
+exports.UserModel = mongoose.model("User", userSchema);
 //# sourceMappingURL=User.js.map

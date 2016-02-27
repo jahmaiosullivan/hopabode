@@ -1,6 +1,5 @@
 /// <reference path="../typings/node/node.d.ts"/>
-/// <reference path="./IService.ts"/>
-var bcrypt = require('bcryptjs'), User = require('../models/user'), deferred = global.Q.defer(), indicative = new (require('indicative'))();
+var bcrypt = require('bcryptjs'), user = require('../models/user'), User = user.User, deferred = global.Q.defer(), indicative = new (require('indicative'))();
 var UserService = (function () {
     function UserService() {
         this.validation_rules = {
