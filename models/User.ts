@@ -11,6 +11,8 @@ var userSchema = new  mongoose.Schema({
     logourl: String
 });
 userSchema.plugin(timestamps);
+
+
 export interface IUserModel extends mongoose.Document {
     username: String,
     password: String,

@@ -14,12 +14,12 @@ var CityController = (function () {
         var city = new City();
         city.name = req.body.name;
         city.location = "Massachusetts";
-        city.isValid()
-            .then(function () {
-            city.save();
-        })
-            .then(function () {
+        city.save()
+            .then(function (city) {
             res.json(city);
+        })
+            .catch(function (error) {
+            res.json(error.message);
         });
     };
     return CityController;
