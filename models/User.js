@@ -5,6 +5,7 @@ var timestamps = require('mongoose-timestamp');
 var userSchema = new mongoose.Schema({
     username: String,
     password: String,
+    email: String,
     logourl: String
 });
 userSchema.plugin(timestamps);
