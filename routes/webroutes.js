@@ -4,7 +4,8 @@ var passport = require('passport');
 var viewsFolder = 'auth';
 var userservice = new (require('../services/userservice'))();
 var authHelper = require('./middleware/authHelper');
-var City = require("../models/city");
+var city = require("../models/city");
+var City = city.CityModel;
 var WebRoutes = (function () {
     function WebRoutes() {
     }

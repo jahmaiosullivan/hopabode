@@ -16,5 +16,4 @@ export interface IPostModel extends mongoose.Document {
     content: String,
     images: [String]
 }
-
 export var PostModel = mongoose.model<IPostModel>("Post", postSchema);
