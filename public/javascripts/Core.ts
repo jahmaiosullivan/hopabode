@@ -13,13 +13,15 @@ module HobbyClue {
     }
 
     export class Ajax {
-        post(url: string, formData: any, successFn: any, errorFn: any) {
+        post(url: string, formData: any, successFn: any) {
             $.ajax({
                 url: url,
                 type: "POST",
                 data: formData,
                 success: successFn,
-                error: successFn
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('error: ' + jqXHR.responseText);
+                }
             });
         }
     }
