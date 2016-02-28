@@ -22,7 +22,7 @@ class CityController {
                     res.json(city);
                 })
                 .catch(function(error) {
-                    res.json(error.message);
+                    res.status(409).json(error.message);
                 });
     }
 }

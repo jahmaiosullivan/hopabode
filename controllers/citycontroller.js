@@ -19,7 +19,7 @@ var CityController = (function () {
             res.json(city);
         })
             .catch(function (error) {
-            res.json(error.message);
+            res.status(409).json(error.message);
         });
     };
     return CityController;
