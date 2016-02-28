@@ -3,13 +3,9 @@
 
 module HobbyClue {
     export class Groups implements Ajax {
-        constructor() {
-
-        }
-
         saveCity(cityName:string) {
             var formData = {name: cityName};
-            this.post("/api/v1/city",
+            this.post(HobbyClue.Urls.City["base"],
                         formData,
                         function (data, textStatus, jqXHR) {
                             //data - response from server
@@ -24,5 +20,5 @@ HobbyClue.Core.applyMixins(HobbyClue.Groups, [HobbyClue.Ajax])
 
 $(function () {
     var groups = new HobbyClue.Groups();
-    groups.saveCity('Daylight');
+    groups.saveCity('RightNow');
 });

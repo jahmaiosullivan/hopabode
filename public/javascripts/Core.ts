@@ -1,8 +1,7 @@
 /// <reference path="../../typings/global.d.ts"/>
 
 module HobbyClue {
-    export class Core
-    {
+    export class Core {
         static applyMixins(derivedCtor:any, baseCtors:any[]):void {
             baseCtors.forEach(baseCtor => {
                 Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
@@ -13,7 +12,7 @@ module HobbyClue {
     }
 
     export class Ajax {
-        post(url: string, formData: any, successFn: any) {
+        post(url:string, formData:any, successFn:any) {
             $.ajax({
                 url: url,
                 type: "POST",
@@ -25,4 +24,12 @@ module HobbyClue {
             });
         }
     }
+
+    interface Urls {
+        City: { [name: string]: string; };
+    }
+    var obj: Urls = { City: {} }
+    obj.City["base"] = "/api/v1/city";
+    export var Urls = obj;
+
 }

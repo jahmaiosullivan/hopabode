@@ -37,4 +37,4 @@ citySchema.pre('save', function (next) {
 });
 citySchema.plugin(timestamps);
 exports.CityModel = mongoose.model("City", citySchema);
-//# sourceMappingURL=City.js.map
+//# sourceMappingURL=city.js.map
